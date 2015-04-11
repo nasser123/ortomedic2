@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e98dcc70-64a4-4c69-8c73-1aac82e3b0f1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     convenio.`idconvenio` AS convenio_idconvenio,
+     convenio.`descricao` AS convenio_descricao,
+     convenio.`observacoes` AS convenio_observacoes
+FROM
+     `convenio` convenio]]>
+	</queryString>
+	<field name="convenio_idconvenio" class="java.lang.Integer"/>
+	<field name="convenio_descricao" class="java.lang.String"/>
+	<field name="convenio_observacoes" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="76683ad2-057f-4d0b-8673-ea272e3ae7e6"/>
+				<text><![CDATA[convenio_idconvenio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="8147a9fd-6da3-42f9-8984-e6beb089b109"/>
+				<text><![CDATA[convenio_descricao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="345" height="20" uuid="c5e543f9-e2de-4f4c-befa-4e8a77767c46"/>
+				<text><![CDATA[convenio_observacoes]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="50d70530-d274-4f58-a911-2ca510525b06"/>
+				<textFieldExpression><![CDATA[$F{convenio_idconvenio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="995956d7-699e-4bc3-be36-cf4bca0a76d4"/>
+				<textFieldExpression><![CDATA[$F{convenio_descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="345" height="20" uuid="3986a433-44f3-4f89-9408-d2943417ba26"/>
+				<textFieldExpression><![CDATA[$F{convenio_observacoes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
