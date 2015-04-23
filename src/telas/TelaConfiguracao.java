@@ -32,7 +32,7 @@ public class TelaConfiguracao extends javax.swing.JFrame {
         this.database = config.get("db.database");
         this.user = config.get("db.user");
         this.password = config.get("db.password");
-        
+
         jTextFieldName.setText(this.name);
         jTextFieldHost.setText(this.host);
         jTextFieldDataBase.setText(this.database);
@@ -65,7 +65,7 @@ public class TelaConfiguracao extends javax.swing.JFrame {
         jButtonSalvar = new javax.swing.JButton();
         jPasswordFieldPassword = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,6 +87,11 @@ public class TelaConfiguracao extends javax.swing.JFrame {
         jButtonSair.setText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -180,6 +185,11 @@ public class TelaConfiguracao extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        this.dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSairActionPerformed
 
     /**
      * @param args the command line arguments
