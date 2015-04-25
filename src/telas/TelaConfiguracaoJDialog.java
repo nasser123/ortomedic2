@@ -9,7 +9,9 @@ import utilidades.ConfigurationFactory;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.Query;
 import utilidades.ConfigTelas;
+import utilidades.ConnectionFactory;
 
 /**
  *
@@ -20,8 +22,8 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     /**
      * Creates new form TelaConfiguracaoJDialog
      */
-    
     ConfigurationFactory cf;
+
     public TelaConfiguracaoJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -32,7 +34,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         jTextFieldName.setText(cf.DBNAME);
         jTextFieldHost.setText(cf.DBHOST);
         jTextFieldDataBase.setText(cf.DATABASE);
@@ -40,8 +42,6 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jTextFieldUser.setText(cf.DBUSER);
         jPasswordFieldPassword.setText(cf.DBPASSWORD);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +69,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldPort = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -108,7 +109,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
                 jButtonSairActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 265, 80, 80));
+        jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 80, 80));
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -119,7 +120,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 265, 80, 80));
+        jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 80, 80));
 
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
         jButtonSalvar.setText("Gravar");
@@ -130,18 +131,28 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
                 jButtonSalvarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 265, 80, 80));
+        jPanel1.add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 80, 80));
         jPanel1.add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 209, 277, -1));
 
         jLabel7.setText("Port:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 119, -1, -1));
         jPanel1.add(jTextFieldPort, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 116, 277, -1));
 
+        jButton1.setText("Restaurar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 273, -1, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +169,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         cf.DBPORT = jTextFieldPort.getText();
         cf.DATABASE = jTextFieldDataBase.getText();
         cf.DBUSER = jTextFieldUser.getText();
-        
+
         char[] senhaTemp = jPasswordFieldPassword.getPassword();
         String senha = "";
         for (int i = 0; i < senhaTemp.length; i++) {
@@ -175,6 +186,13 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Query backupQuery = ConnectionFactory.getEntityManager().createNativeQuery("Select * from paciente");
+        backupQuery.setParameter("target", new java.io.File(".\\backup"));
+        backupQuery.getSingleResult();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +238,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSalvar;
