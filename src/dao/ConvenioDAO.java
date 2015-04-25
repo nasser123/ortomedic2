@@ -120,6 +120,7 @@ public class ConvenioDAO implements IDao {
                 entity.getTransaction().begin();
             }
             entity.merge(c);
+            entity.refresh(c);
             entity.getTransaction().commit();
             if (mensagem) {
                 JOptionPane.showMessageDialog(null, "Convênio alterado com sucesso.");

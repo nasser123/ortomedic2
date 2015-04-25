@@ -94,6 +94,17 @@ public class ConfigTelas {
         }
 
     }
-
     
+    public void carregarConfig(JPanel jp) {
+        
+        //faz com que a tecla ENTER funcione conforme a tecla TAB
+        HashSet conj = new HashSet(jp.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
+        jp.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+        
+
+        
+       
+
+    }    
 }

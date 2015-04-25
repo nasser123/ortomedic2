@@ -101,6 +101,7 @@ public class PacienteDAO implements IDao {
                     entity.getTransaction().begin();
                 }
                 entity.merge(p);
+                entity.refresh(p);
                 entity.getTransaction().commit();
                 if (mensagem) {
                     JOptionPane.showMessageDialog(null, "Paciente alterado com sucesso.");

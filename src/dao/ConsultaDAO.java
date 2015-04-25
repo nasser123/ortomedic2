@@ -115,6 +115,7 @@ public class ConsultaDAO implements IDao {
                 entity.getTransaction().begin();
             }
             entity.merge(c);
+            entity.refresh(c);
             entity.getTransaction().commit();
             if (mensagem) {
                 JOptionPane.showMessageDialog(null, "Consulta alterada com sucesso.");

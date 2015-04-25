@@ -155,6 +155,7 @@ public class UsuarioDAO implements IDao {
                     entity.getTransaction().begin();
                 }
                 entity.merge(u);
+                entity.refresh(u);
                 entity.getTransaction().commit();
                 if (mensagem) {
                     JOptionPane.showMessageDialog(null, "Usuario alterado com sucesso.");
