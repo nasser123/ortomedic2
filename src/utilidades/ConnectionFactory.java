@@ -1,8 +1,12 @@
 package utilidades;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -12,6 +16,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import org.ini4j.Profile.Section;
+import telas.TelaConfiguracaoJDialog;
 
 /**
  *
@@ -77,6 +82,58 @@ public class ConnectionFactory {
         } else {
 
             return entityManager;
+        }
+    }
+
+    public static boolean geraBackup() {
+        boolean gravou = false;
+        try {
+            File file = new File("Backup");
+            file.mkdir();
+            Date data = Datas.getCurrentTime();
+            String nomeBkp = "Backup("+Datas.getDataString(data)+").sql";
+            // String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 -x -e -B -i -K  --add-drop-database  ortomedic < Backup\\" + nomeBkp;
+            String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 ortomedic > Backup\\" + nomeBkp;
+            //String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456   ortomedic < .\\Backup\\" + nomeBkp;
+            System.out.println(dump);
+            Runtime bkp = Runtime.getRuntime();
+            bkp.exec(dump);
+            JOptionPane.showMessageDialog(null, "gravou");
+            gravou = true;
+        } catch (IOException ioe) {
+            JOptionPane.showMessageDialog(null, "não gravou");
+            gravou = false;
+        }
+        return gravou;
+    }
+    
+    public static boolean restauraBackup(String arquivo){
+       Statement s = null;
+        try {
+            s = getConnectionWithNoDatabase().createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        try {
+            s.execute("CREATE DATABASE IF NOT EXISTS `ortomedic` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
+            
+          } catch (SQLException ex) {
+            ex.printStackTrace();
+              Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
+              return false;
+        }
+        
+        try {
+            String dump = "cmd.exe /c %mysql_dir%/mysql --user=root --password=123456 ortomedic < " + arquivo;
+            System.out.println(dump);
+            Runtime bkp = Runtime.getRuntime();
+            bkp.exec(dump);
+            JOptionPane.showMessageDialog(null, "gravou");
+            return true;
+        } catch (IOException ioe) {
+            JOptionPane.showMessageDialog(null, "não gravou");
+            return false;
         }
     }
 

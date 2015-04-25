@@ -276,5 +276,13 @@ public class Datas {
         return age;
     }
 
+    public static String getDataString(Date data){
+        String retorno = "";
+        retorno = getDia(data) + "-" +
+                getMes(data)  + "-" +
+                getAno(data);
+        return retorno;
+    
+    }
     
 }

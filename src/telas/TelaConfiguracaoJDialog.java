@@ -5,11 +5,16 @@
  */
 package telas;
 
+import java.io.File;
 import utilidades.ConfigurationFactory;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.Query;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
 
@@ -69,7 +74,8 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldPort = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonGeraBackup = new javax.swing.JButton();
+        jButtonRestaura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -138,13 +144,21 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 119, -1, -1));
         jPanel1.add(jTextFieldPort, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 116, 277, -1));
 
-        jButton1.setText("Restaurar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGeraBackup.setText("Gera");
+        jButtonGeraBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonGeraBackupActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 273, -1, 80));
+        jPanel1.add(jButtonGeraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 80, 80));
+
+        jButtonRestaura.setText("Restaura");
+        jButtonRestaura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRestauraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonRestaura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 273, -1, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,12 +201,45 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Query backupQuery = ConnectionFactory.getEntityManager().createNativeQuery("Select * from paciente");
-        backupQuery.setParameter("target", new java.io.File(".\\backup"));
-        backupQuery.getSingleResult();
+    private void jButtonGeraBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeraBackupActionPerformed
+        ConnectionFactory.geraBackup();
+    }//GEN-LAST:event_jButtonGeraBackupActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonRestauraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestauraActionPerformed
+       JFileChooser file = new JFileChooser();
+       file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+       int i = file.showSaveDialog(null);
+       
+       if (i==1){
+           System.out.println("nada");
+       }else{
+           File arquivo = file.getSelectedFile();
+           ConnectionFactory.restauraBackup(arquivo.getPath());
+       }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+            // try {
+//            File file = new File("Backup.sql");
+//            String createDB = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 ortomedic < Backup.sql";
+//            String dumpRecovery = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 ortomedic < Backup.sql";
+//            Runtime bkp = Runtime.getRuntime();
+//            bkp.exec(createDB);
+//            bkp.exec(dumpRecovery);
+//            JOptionPane.showMessageDialog(rootPane, "gravou");
+//        } catch (IOException ioe) {
+//            JOptionPane.showMessageDialog(rootPane, "não gravou");
+//        }
+        
+    }//GEN-LAST:event_jButtonRestauraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,8 +285,9 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonGeraBackup;
+    private javax.swing.JButton jButtonRestaura;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabel1;
