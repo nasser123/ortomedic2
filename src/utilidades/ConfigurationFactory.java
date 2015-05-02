@@ -30,6 +30,8 @@ public class ConfigurationFactory {
     public static String DBUSER;
     public static String DBPASSWORD;
     public static String DBPORT;
+    public static String DBDIR;
+    public static File DBFILE;
     private static Section config;
 
     public ConfigurationFactory(String secao) throws FileNotFoundException {
@@ -54,10 +56,26 @@ public class ConfigurationFactory {
             DBPORT = config.get("db.port");
             DBUSER = config.get("db.user");
             DBPASSWORD = config.get("db.password");
+            DBDIR = config.get("db.dir");
+            DBFILE = new File(DBDIR);
         }
         return config;
     }
 
+    private static String preencheArquivo(String arquivo) {
+        String temp = arquivo;
+        String arquivoFinal = "";
+        char[] tempChar = temp.toCharArray();
+        for(int i = 0 ; i < temp.length() ; i ++){
+            String teste = "" + tempChar[i];
+            if(teste.equals("\\")){
+                arquivoFinal = arquivoFinal + "/";
+            }else{
+            arquivoFinal = arquivoFinal + tempChar[i];
+            }
+        }
+        return arquivoFinal;
+    }
     public static Section getConfiguration()  {
 
         if (ini != null) {
@@ -72,6 +90,8 @@ public class ConfigurationFactory {
             DBPORT = config.get("db.port");
             DBUSER = config.get("db.user");
             DBPASSWORD = config.get("db.password");
+            DBDIR = config.get("db.dir");
+            DBFILE = new File(DBDIR);
         }
         return config;
     }
@@ -99,12 +119,11 @@ public class ConfigurationFactory {
         return ini;
     }
 
-    public void gravaConfiguracao() {
+    public static void gravaConfiguracao() {
 
-        //String endereco = JOptionPane.showInputDialog ("Digite o endereco do arquivos");  
-        //arquivo para ser lido  
+        DBDIR = preencheArquivo(DBDIR);
+        
         File arquivo1 = new File("config.ini");//cria o file do arquivo informado  
-        //arquivo para escrita  
         try {
             arquivo1.createNewFile();//arquivo criado  
            /*LEITURA*/
@@ -113,7 +132,6 @@ public class ConfigurationFactory {
            /*ESCREVER*/
             FileWriter fileW = new FileWriter(arquivo1);//arquivo para escrita  
             BufferedWriter buffW = new BufferedWriter(fileW);
-
             buffW.write("[main]");
             buffW.newLine();
             buffW.write("db.name=" + DBNAME);
@@ -127,6 +145,8 @@ public class ConfigurationFactory {
             buffW.write("db.user=" + DBUSER);
             buffW.newLine();
             buffW.write("db.password=" + DBPASSWORD);
+            buffW.newLine();
+            buffW.write("db.dir=" + DBDIR);
             buffW.newLine();
 
             buffR.close();

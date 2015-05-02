@@ -87,28 +87,40 @@ public class ConnectionFactory {
 
     public static boolean geraBackup() {
         boolean gravou = false;
-        try {
-            File file = new File("Backup");
-            file.mkdir();
-            Date data = Datas.getCurrentTime();
-            String nomeBkp = "Backup("+Datas.getDataString(data)+").sql";
-            // String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 -x -e -B -i -K  --add-drop-database  ortomedic < Backup\\" + nomeBkp;
-            String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 ortomedic > Backup\\" + nomeBkp;
-            //String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456   ortomedic < .\\Backup\\" + nomeBkp;
-            System.out.println(dump);
-            Runtime bkp = Runtime.getRuntime();
-            bkp.exec(dump);
-            JOptionPane.showMessageDialog(null, "gravou");
-            gravou = true;
-        } catch (IOException ioe) {
-            JOptionPane.showMessageDialog(null, "não gravou");
-            gravou = false;
+        if (!existeMysqlDump()) {
+            try {
+                File file = new File("Backup");
+                file.mkdir();
+                Date data = Datas.getCurrentTime();
+                String nomeBkp = "Backup(" + Datas.getDataString(data) + ").sql";
+                // String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456 -x -e -B -i -K  --add-drop-database  ortomedic < Backup\\" + nomeBkp;
+                String dump = "cmd.exe /c " + ConfigurationFactory.DBDIR + "/mysqldump "
+                        + "--user=" + ConfigurationFactory.DBUSER
+                        + " --password=" + ConfigurationFactory.DBPASSWORD
+                        + "  " + ConfigurationFactory.DATABASE + " > Backup\\" + nomeBkp;
+                //String dump = "cmd.exe /c %mysql_dir%/mysqldump --user=root --password=123456   ortomedic < .\\Backup\\" + nomeBkp;
+                System.out.println(dump);
+                Runtime bkp = Runtime.getRuntime();
+                bkp.exec(dump);
+                JOptionPane.showMessageDialog(null, "gravou");
+                gravou = true;
+            } catch (IOException ioe) {
+                JOptionPane.showMessageDialog(null, "não gravou");
+                gravou = false;
+            }
+        } else {
+            return gravou;
         }
         return gravou;
     }
-    
-    public static boolean restauraBackup(String arquivo){
-       Statement s = null;
+
+    private static boolean existeMysqlDump() {
+        File testeMySqlDump = new File(ConfigurationFactory.DBDIR + "/mysqldump");
+        return testeMySqlDump.isFile();
+    }
+
+    public static boolean restauraBackup(String arquivo) {
+        Statement s = null;
         try {
             s = getConnectionWithNoDatabase().createStatement();
         } catch (SQLException ex) {
@@ -117,13 +129,13 @@ public class ConnectionFactory {
         }
         try {
             s.execute("CREATE DATABASE IF NOT EXISTS `ortomedic` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
-            
-          } catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             ex.printStackTrace();
-              Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
-              return false;
+            Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        
+
         try {
             String dump = "cmd.exe /c %mysql_dir%/mysql --user=root --password=123456 ortomedic < " + arquivo;
             System.out.println(dump);

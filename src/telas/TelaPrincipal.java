@@ -69,6 +69,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemUsuarios = new javax.swing.JMenuItem();
+        jMenuItemPacientes = new javax.swing.JMenuItem();
+        jMenuItemConvenios = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItemListaConsulta = new javax.swing.JMenuItem();
+        jMenuItemNovaConsulta = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemConfig = new javax.swing.JMenuItem();
+        jMenuItemBackup = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +89,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ortomedic");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 697, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 697, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -293,6 +304,78 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Consultas maracadas para o dia:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
 
+        jMenu1.setText("Cadastros");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItemUsuarios.setText("Usuários");
+        jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemUsuarios);
+
+        jMenuItemPacientes.setText("Pacientes");
+        jMenu1.add(jMenuItemPacientes);
+
+        jMenuItemConvenios.setText("Convênios");
+        jMenuItemConvenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConveniosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemConvenios);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Consultas");
+
+        jMenuItemListaConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jMenuItemListaConsulta.setText("Lista de Consultas");
+        jMenuItemListaConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListaConsultaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemListaConsulta);
+
+        jMenuItemNovaConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItemNovaConsulta.setText("Nova Consulta");
+        jMenuItemNovaConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNovaConsultaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemNovaConsulta);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu2.setText("Ferramentas");
+
+        jMenuItemConfig.setText("Configurações de Acesso");
+        jMenuItemConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConfigActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemConfig);
+
+        jMenuItemBackup.setText("Backup");
+        jMenuItemBackup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBackupActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemBackup);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -303,7 +386,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         bindingGroup.bind();
@@ -408,6 +491,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseEntered
 
+    private void jMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuariosActionPerformed
+        new TelaListaUsuarios().setVisible(true);
+    }//GEN-LAST:event_jMenuItemUsuariosActionPerformed
+
+    private void jMenuItemConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConveniosActionPerformed
+        new TelaListaConvenio().setVisible(true);
+    }//GEN-LAST:event_jMenuItemConveniosActionPerformed
+
+    private void jMenuItemConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigActionPerformed
+       new TelaConfiguracaoJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItemConfigActionPerformed
+
+    private void jMenuItemBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBackupActionPerformed
+        new TelaBackupJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItemBackupActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        new TelaListaPacientes().setVisible(true);
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItemListaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaConsultaActionPerformed
+        new TelaListaConsultas().setVisible(true);
+    }//GEN-LAST:event_jMenuItemListaConsultaActionPerformed
+
+    private void jMenuItemNovaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovaConsultaActionPerformed
+        new TelaCadastroConsulta().setVisible(true);
+    }//GEN-LAST:event_jMenuItemNovaConsultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,6 +573,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooserData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemBackup;
+    private javax.swing.JMenuItem jMenuItemConfig;
+    private javax.swing.JMenuItem jMenuItemConvenios;
+    private javax.swing.JMenuItem jMenuItemListaConsulta;
+    private javax.swing.JMenuItem jMenuItemNovaConsulta;
+    private javax.swing.JMenuItem jMenuItemPacientes;
+    private javax.swing.JMenuItem jMenuItemUsuarios;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
