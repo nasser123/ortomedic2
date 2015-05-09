@@ -59,6 +59,10 @@ public class ConfigurationFactory {
             DBDIR = config.get("db.dir");
             DBFILE = new File(DBDIR);
         }
+        if(DBDIR == null){
+            DBDIR = "mysql";
+            DBFILE = new File(DBDIR);
+        }
         return config;
     }
 

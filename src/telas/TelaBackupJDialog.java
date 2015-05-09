@@ -34,7 +34,6 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
             Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        jTextFieldDiretorio.setText(cf.DBFILE.getAbsolutePath());
         ConfigTelas ct = new ConfigTelas(jPanel1, 300, 400);
         ct.carregarConfig(jPanel1);
     }
@@ -52,10 +51,6 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jButtonGeraBackup = new javax.swing.JButton();
         jButtonRestauraBackup = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jTextFieldDiretorio = new javax.swing.JTextField();
-        jButtonProcurar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -84,28 +79,6 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
             }
         });
         jPanel1.add(jButtonRestauraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 120, 80));
-
-        jLabel8.setText("Diretório do banco de dados");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-        jPanel1.add(jTextFieldDiretorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 330, 40));
-
-        jButtonProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/pesquisar2.png"))); // NOI18N
-        jButtonProcurar.setText("Procurar");
-        jButtonProcurar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonProcurarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonProcurar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/ok.png"))); // NOI18N
-        jButton1.setText("Gravar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
 
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
@@ -154,34 +127,6 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
        }
     }//GEN-LAST:event_jButtonRestauraBackupActionPerformed
 
-    private void jButtonProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProcurarActionPerformed
-        String diretorio = cf.DBDIR;
-
-        System.out.println(diretorio);
-        JFileChooser file = null;
-        if (cf.DBDIR != null) {
-            file = new JFileChooser(diretorio);
-        } else {
-            file = new JFileChooser();
-        }
-        file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int i = file.showOpenDialog(null);
-
-        if (i == 1) {
-            System.out.println("nada");
-        } else {
-            File arquivo = file.getSelectedFile();
-            jTextFieldDiretorio.setText(arquivo.getAbsolutePath());
-            cf.DBFILE = arquivo.getAbsoluteFile();
-            cf.DBDIR = cf.DBFILE.getAbsolutePath();
-        }
-    }//GEN-LAST:event_jButtonProcurarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ConfigurationFactory.DBDIR = jTextFieldDiretorio.getText();
-        ConfigurationFactory.gravaConfiguracao();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
@@ -229,14 +174,10 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonGeraBackup;
-    private javax.swing.JButton jButtonProcurar;
     private javax.swing.JButton jButtonRestauraBackup;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldDiretorio;
     // End of variables declaration//GEN-END:variables
 }
