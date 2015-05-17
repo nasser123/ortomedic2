@@ -56,7 +56,7 @@ public class ConfigurationFactory {
             DBPORT = config.get("db.port");
             DBUSER = config.get("db.user");
             DBPASSWORD = config.get("db.password");
-            DBDIR = config.get("db.dir");
+            DBDIR = "mysql";
             DBFILE = new File(DBDIR);
         }
         if(DBDIR == null){
@@ -94,7 +94,7 @@ public class ConfigurationFactory {
             DBPORT = config.get("db.port");
             DBUSER = config.get("db.user");
             DBPASSWORD = config.get("db.password");
-            DBDIR = config.get("db.dir");
+            DBDIR = "mysql";
             DBFILE = new File(DBDIR);
         }
         return config;

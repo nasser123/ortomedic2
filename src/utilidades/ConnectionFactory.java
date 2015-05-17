@@ -87,7 +87,7 @@ public class ConnectionFactory {
 
     public static boolean geraBackup() {
         boolean gravou = false;
-        if (!existeExecutavel("mysqldump.exe")) {
+        if (existeExecutavel("mysqldump.exe")) {
             try {
                 File file = new File("Backup");
                 file.mkdir();
@@ -103,10 +103,16 @@ public class ConnectionFactory {
                 System.out.println(dump);
                 Runtime bkp = Runtime.getRuntime();
                 bkp.exec(dump);
-                JOptionPane.showMessageDialog(null, "gravou");
-                gravou = true;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                boolean tamanho = arquivoPreenchido(nomeBkp);
+                if (tamanho) {
+                    gravou = true;
+                }
             } catch (IOException ioe) {
-                JOptionPane.showMessageDialog(null, "não gravou");
                 gravou = false;
             }
         } else {
@@ -116,15 +122,31 @@ public class ConnectionFactory {
         return gravou;
     }
 
+    private static boolean arquivoPreenchido(String arquivo) {
+        File file = new File("./Backup/" + arquivo);
+        long tamanho = file.getTotalSpace();
+        if (tamanho > 0) {
+            System.out.println(file.getAbsolutePath());
+            System.out.println(tamanho);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private static boolean existeExecutavel(String arquivo) {
         File testeMySqlDump = new File(ConfigurationFactory.DBFILE.getAbsolutePath() + File.separator + arquivo);
         File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
-        for (int i = 0; i < arquivos.length; i++) {
-                System.out.println(arquivos[i].isFile());
+        if (ConfigurationFactory.DBFILE.exists()) {
+            for (int i = 0; i < arquivos.length; i++) {
+                System.out.println(arquivos[i].getAbsolutePath());
+                if (testeMySqlDump.getAbsolutePath().equals(arquivos[i].getAbsolutePath())) {
+                    return true;
+                }
+            }
         }
-        System.out.println(testeMySqlDump.getAbsolutePath());
         JOptionPane.showMessageDialog(null, "Não foi encontrado arquivo " + arquivo);
-        return testeMySqlDump.isFile();
+        return false;
     }
 
     public static boolean restauraBackup(String arquivo) {

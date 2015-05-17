@@ -191,7 +191,6 @@ public class UsuarioDAO implements IDao {
             if (Senhas.testaSenhasCadastro(s, u.getSenha())) {
                 return true;
             } else {
-                //JOptionPane.showMessageDialog(null, "Usuário digitado não existe.");
                 return false;
             }
         }

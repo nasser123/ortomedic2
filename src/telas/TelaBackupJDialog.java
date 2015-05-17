@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import utilidades.ConfigTelas;
 import utilidades.ConfigurationFactory;
 import utilidades.ConnectionFactory;
@@ -111,7 +112,11 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGeraBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeraBackupActionPerformed
-        ConnectionFactory.geraBackup();
+        boolean gravou = ConnectionFactory.geraBackup();
+        if(gravou)
+            JOptionPane.showMessageDialog(rootPane, "Arquivo gravado com sucesso");
+        else
+            JOptionPane.showMessageDialog(rootPane, "Não foi possível gravar arquivo");
     }//GEN-LAST:event_jButtonGeraBackupActionPerformed
 
     private void jButtonRestauraBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestauraBackupActionPerformed
