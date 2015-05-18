@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashSet;
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -53,6 +54,10 @@ public class ConfigTelas {
         this.alt = jf.getHeight();
 
     }
+    
+    public ConfigTelas(JDialog jd){
+        
+    }
 
     public void carregaIcone(JFrame jp) {
         BufferedImage ico = null;
@@ -69,24 +74,24 @@ public class ConfigTelas {
 
     }
 
-    public void carregarConfig(JFrame jp) {
+    public void carregarConfig(JFrame jf) {
         
         //faz com que a tecla ENTER funcione conforme a tecla TAB
-        HashSet conj = new HashSet(jp.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        HashSet conj = new HashSet(jf.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
-        jp.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+        jf.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
         
 
-        jp.setTitle("Ortomedic");
+        jf.setTitle("Ortomedic");
 
-        jp.setResizable(false);
+        jf.setResizable(false);
 
 
         //Altera o icone padrão do java
         BufferedImage ico = null;
         try {
-            ico = ImageIO.read(jp.getClass().getResource("/icones32/ortomedic.png"));
-            jp.setIconImage(ico);
+            ico = ImageIO.read(jf.getClass().getResource("/icones32/ortomedic.png"));
+            jf.setIconImage(ico);
         } catch (IllegalArgumentException iae) {
             System.out.println("Erro ao carregar icone!");
         } catch (IOException e) {
@@ -101,6 +106,16 @@ public class ConfigTelas {
         HashSet conj = new HashSet(jp.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
         jp.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+        
 
-    }    
+    } 
+    
+    public void carregarConfig(JDialog jd){
+     //faz com que a tecla ENTER funcione conforme a tecla TAB
+        HashSet conj = new HashSet(jd.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
+        jd.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+    
+        jd.setTitle("Ortomedic");
+    }
 }

@@ -37,6 +37,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         
         ConfigTelas ct = new ConfigTelas(jPanel1, 300, 400);
         ct.carregarConfig(jPanel1);
+        this.setTitle("Ortomedic");
     }
 
     /**
@@ -65,7 +66,11 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         jLabel3.setText("Backup");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 590, -1));
 
+        jButtonGeraBackup.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonGeraBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/backup_save.png"))); // NOI18N
         jButtonGeraBackup.setText("Gerar Backup");
+        jButtonGeraBackup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonGeraBackup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonGeraBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGeraBackupActionPerformed(evt);
@@ -73,7 +78,11 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonGeraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 120, 80));
 
+        jButtonRestauraBackup.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonRestauraBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/backup_restore.png"))); // NOI18N
         jButtonRestauraBackup.setText("Restaurar Backup");
+        jButtonRestauraBackup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonRestauraBackup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonRestauraBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRestauraBackupActionPerformed(evt);
@@ -81,6 +90,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonRestauraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 120, 80));
 
+        jButtonSair.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

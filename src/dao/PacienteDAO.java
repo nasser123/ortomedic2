@@ -84,6 +84,7 @@ public class PacienteDAO implements IDao {
         List paciente = entity.createNamedQuery("Paciente.findByIdpaciente").setParameter("idpaciente", id).getResultList();
         if (!paciente.isEmpty()) {
             p = (Paciente) paciente.get(0);
+            entity.refresh(p);
             return p;
         }
         return null;

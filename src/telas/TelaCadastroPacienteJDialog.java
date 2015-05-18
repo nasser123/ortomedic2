@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Convenio;
 import model.Paciente;
+import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
 
 /**
@@ -32,6 +33,8 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
         this.pac = paciente;
         this.novo = novo;
         initComponents();
+        ConfigTelas ct = new ConfigTelas(this);
+        ct.carregarConfig(this);
 
     }
 
@@ -404,9 +407,10 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
 
     private void jButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar1ActionPerformed
         pDAO = new PacienteDAO();
+        boolean gravou = false;
         if (!this.novo) {
             try {
-                pDAO.alterar(this.paciente1, true);
+                gravou = pDAO.alterar(this.paciente1, true);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCadastroPacienteJDialog.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -423,10 +427,13 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
                 this.paciente1.setTelefone1(jTextFieldTelefone.getText());
                 this.paciente1.setTelefone2(jTextFieldCelular.getText());
 
-                pDAO.inserir(this.paciente1);
+                gravou = pDAO.inserir(this.paciente1);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCadastroPacienteJDialog.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        if (gravou) {
+            this.dispose();
         }
 
     }//GEN-LAST:event_jButtonSalvar1ActionPerformed
