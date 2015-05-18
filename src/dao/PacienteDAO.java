@@ -66,12 +66,11 @@ public class PacienteDAO implements IDao {
             if (p.getConsultaList().isEmpty()) {
                 if (!entity.getTransaction().isActive()) {
                     entity.getTransaction().begin();
-                    entity.remove(p);
-                    entity.getTransaction().commit();
-                    JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso.");
-                    return true;
                 }
-
+                entity.remove(p);
+                entity.getTransaction().commit();
+                JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso.");
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Esse paciente não pode ser excluido.");
             }
@@ -101,14 +100,15 @@ public class PacienteDAO implements IDao {
                     entity.getTransaction().begin();
                 }
                 entity.merge(p);
-                entity.refresh(p);
                 entity.getTransaction().commit();
                 if (mensagem) {
                     JOptionPane.showMessageDialog(null, "Paciente alterado com sucesso.");
                 }
                 return true;
             }
+            atualizaPaciente(p);
         }
+
         return false;
     }
 
@@ -189,5 +189,13 @@ public class PacienteDAO implements IDao {
 
         }
 
+    }
+
+    private void atualizaPaciente(Paciente paciente) {
+        if (!entity.getTransaction().isActive()) {
+            entity.getTransaction().begin();
+        }
+        entity.refresh(paciente);
+        entity.getTransaction().commit();
     }
 }

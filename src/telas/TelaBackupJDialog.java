@@ -125,7 +125,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
        int i = file.showSaveDialog(null);
        
        if (i==1){
-           System.out.println("nada");
+
        }else{
            File arquivo = file.getSelectedFile();
            ConnectionFactory.restauraBackup(arquivo.getPath());

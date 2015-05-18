@@ -258,21 +258,12 @@ public class Paciente implements Serializable {
     }
 
     public String getCpf() {
-        if (ValidaValores.ehCPF(cpf)) {
             return cpf;
-        } else {
-            cpf = "";
-            return "";
-        }
     }
 
     public void setCpf(String cpf) {
         String oldCpf = this.cpf;
-        if (ValidaValores.ehCPF(cpf)) {
-            this.cpf = cpf;
-        } else {
-            this.cpf = null;
-        }
+        this.cpf = cpf;
         changeSupport.firePropertyChange("cpf", oldCpf, cpf);
     }
 

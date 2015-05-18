@@ -92,15 +92,13 @@ public class ConnectionFactory {
                 File file = new File("Backup");
                 file.mkdir();
                 Date data = Datas.getCurrentTime();
-                String nomeBkp = "Backup(" + Datas.getDataString(data) + ").sql";
-
+                String nomeBkp = "Backup(" + Datas.getDataString(data)+"-" + System.currentTimeMillis() + ").sql";
                 String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() + File.separator + "mysqldump "
                         + " --user=" + ConfigurationFactory.DBUSER
                         + " --password=" + ConfigurationFactory.DBPASSWORD
                         + " --host=" + ConfigurationFactory.DBHOST
                         + "  " + ConfigurationFactory.DATABASE + " > Backup\\" + nomeBkp;
 
-                System.out.println(dump);
                 Runtime bkp = Runtime.getRuntime();
                 bkp.exec(dump);
                 try {
@@ -124,14 +122,18 @@ public class ConnectionFactory {
 
     private static boolean arquivoPreenchido(String arquivo) {
         File file = new File("./Backup/" + arquivo);
-        long tamanho = file.getTotalSpace();
-        if (tamanho > 0) {
-            System.out.println(file.getAbsolutePath());
-            System.out.println(tamanho);
-            return true;
+        if (file.isFile()) {
+            long tamanho = file.length();
+            if (tamanho > 0) {
+                return true;
+            } else {
+                file.delete();
+                return false;
+            }
         } else {
             return false;
         }
+
     }
 
     private static boolean existeExecutavel(String arquivo) {
@@ -139,7 +141,6 @@ public class ConnectionFactory {
         File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
         if (ConfigurationFactory.DBFILE.exists()) {
             for (int i = 0; i < arquivos.length; i++) {
-                System.out.println(arquivos[i].getAbsolutePath());
                 if (testeMySqlDump.getAbsolutePath().equals(arquivos[i].getAbsolutePath())) {
                     return true;
                 }
@@ -172,7 +173,6 @@ public class ConnectionFactory {
                         + " --user=" + ConfigurationFactory.DBUSER
                         + " --password=" + ConfigurationFactory.DBPASSWORD
                         + " --host=" + ConfigurationFactory.DBHOST + " ortomedic < " + arquivo;
-                System.out.println(dump);
                 Runtime bkp = Runtime.getRuntime();
                 bkp.exec(dump);
                 JOptionPane.showMessageDialog(null, "gravou");

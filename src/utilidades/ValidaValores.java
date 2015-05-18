@@ -32,7 +32,7 @@ public class ValidaValores {
     }
     
     public static boolean ehCPF(String cpf) {
-        if(cpf == null || cpf == ""){
+        if(cpf == null || cpf.equals("")){
             //JOptionPane.showMessageDialog(null, "No campo CPF, não pode estar em branco");
             return false;
         }

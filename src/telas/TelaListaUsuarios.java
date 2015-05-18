@@ -358,7 +358,6 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
                if (jComboBox2.getSelectedIndex() != -1) {
             int teste = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir esse usuario?");
-            System.out.println(teste);
             if (teste == 0) {
                 try {
                     this.uDAO.excluir((Usuario) jComboBox2.getSelectedItem());

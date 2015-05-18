@@ -304,7 +304,6 @@ public class TelaListaConvenio extends javax.swing.JFrame {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         if (jComboBoxConvenios.getSelectedIndex() != -1) {
             int teste = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir esse convênio?");
-            System.out.println(teste);
             if (teste == 0) {
                 try {
                     this.cDAO.excluir((Convenio) jComboBoxConvenios.getSelectedItem());
