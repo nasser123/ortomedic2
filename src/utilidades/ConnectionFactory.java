@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -87,13 +88,16 @@ public class ConnectionFactory {
 
     public static boolean geraBackup() {
         boolean gravou = false;
+        Properties prop = System.getProperties();
+        String sistema = System.getProperty("os.arch");
         if (existeExecutavel("mysqldump.exe")) {
             try {
                 File file = new File("Backup");
                 file.mkdir();
                 Date data = Datas.getCurrentTime();
                 String nomeBkp = "Backup(" + Datas.getDataString(data)+"-" + System.currentTimeMillis() + ").sql";
-                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() + File.separator + "mysqldump "
+                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() 
+                        + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + "mysqldump "
                         + " --user=" + ConfigurationFactory.DBUSER
                         + " --password=" + ConfigurationFactory.DBPASSWORD
                         + " --host=" + ConfigurationFactory.DBHOST
@@ -137,17 +141,27 @@ public class ConnectionFactory {
     }
 
     private static boolean existeExecutavel(String arquivo) {
-        File testeMySqlDump = new File(ConfigurationFactory.DBFILE.getAbsolutePath() + File.separator + arquivo);
-        File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
-        if (ConfigurationFactory.DBFILE.exists()) {
-            for (int i = 0; i < arquivos.length; i++) {
-                if (testeMySqlDump.getAbsolutePath().equals(arquivos[i].getAbsolutePath())) {
-                    return true;
-                }
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Não foi encontrado arquivo " + arquivo);
-        return false;
+        File testeMySqlDump = new File(ConfigurationFactory.DBFILE.getAbsolutePath() 
+                + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator+ arquivo);
+        if(testeMySqlDump.isFile())
+            return true;
+        else
+            return false;
+        
+//        File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
+//        if (ConfigurationFactory.DBFILE.exists()) {
+//            for (int i = 0; i < arquivos.length; i++) {
+//                System.out.println(arquivos[i].getAbsolutePath());
+//                if (testeMySqlDump.getAbsolutePath().equals(arquivos[i].getAbsolutePath())) {
+//                    
+//                    return true;
+//                }
+//            }
+//        }
+//        JOptionPane.showMessageDialog(null, "Não foi encontrado arquivo " + arquivo);
+//        
+//        return false;
+        
     }
 
     public static boolean restauraBackup(String arquivo) {
@@ -169,11 +183,13 @@ public class ConnectionFactory {
         if (existeExecutavel("mysql.exe")) {
             try {
 
-                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() + File.separator + "mysql "
+                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() 
+                        + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + "mysql "
                         + " --user=" + ConfigurationFactory.DBUSER
                         + " --password=" + ConfigurationFactory.DBPASSWORD
                         + " --host=" + ConfigurationFactory.DBHOST + " ortomedic < " + arquivo;
                 Runtime bkp = Runtime.getRuntime();
+                System.out.println(dump);
                 bkp.exec(dump);
                 JOptionPane.showMessageDialog(null, "gravou");
                 return true;

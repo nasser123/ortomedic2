@@ -32,6 +32,7 @@ public class ConfigurationFactory {
     public static String DBPORT;
     public static String DBDIR;
     public static File DBFILE;
+    public static String ARCHITECTURE;
     private static Section config;
 
     public ConfigurationFactory(String secao) throws FileNotFoundException {
@@ -56,6 +57,7 @@ public class ConfigurationFactory {
             DBPORT = config.get("db.port");
             DBUSER = config.get("db.user");
             DBPASSWORD = config.get("db.password");
+            ARCHITECTURE = System.getProperty("os.arch");
             DBDIR = "mysql";
             DBFILE = new File(DBDIR);
         }

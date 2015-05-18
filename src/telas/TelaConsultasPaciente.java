@@ -564,7 +564,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
     private void jButtonRelatorioExameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioExameActionPerformed
         if (jComboBoxConsultas.getSelectedIndex() != -1) {
-            this.jButtonSalvarActionPerformed(evt);
+            this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getExames() != null) {
                 ExecutaRelatorio er = new ExecutaRelatorio();
@@ -581,7 +581,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
     private void jButtonRelatorioReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioReceitaActionPerformed
 
         if (jComboBoxConsultas.getSelectedIndex() != -1) {
-            this.jButtonSalvarActionPerformed(evt);
+            this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getReceita() != null) {
                 ExecutaRelatorio er = new ExecutaRelatorio();
@@ -597,7 +597,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
     private void jButtonRelatorioAtestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioAtestadoActionPerformed
         if (jComboBoxConsultas.getSelectedIndex() != -1) {
-            this.jButtonSalvarActionPerformed(evt);
+            this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getAtestado() != null) {
                 ExecutaRelatorio er = new ExecutaRelatorio();
@@ -613,7 +613,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
     private void jButtonRelatorioLaudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioLaudoActionPerformed
         if (jComboBoxConsultas.getSelectedIndex() != -1) {
-            this.jButtonSalvarActionPerformed(evt);
+            this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getLaudo() != null) {
                 ExecutaRelatorio er = new ExecutaRelatorio();
@@ -628,14 +628,19 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRelatorioLaudoActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        pDAO = new PacienteDAO();
+        atualizaPaciente(true);
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void atualizaPaciente(boolean mensagem){
+    pDAO = new PacienteDAO();
         try {
-            pDAO.alterar(this.paciente1, false);
+            pDAO.alterar(this.paciente1, mensagem);
         } catch (SQLException ex) {
             Logger.getLogger(TelaConsultasPaciente.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonSalvarActionPerformed
-
+    
+    
+    }
     private void jButtonCadastroPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroPacienteActionPerformed
         new TelaCadastroPacienteJDialog(this, true, paciente1, false).setVisible(true);
     }//GEN-LAST:event_jButtonCadastroPacienteActionPerformed
