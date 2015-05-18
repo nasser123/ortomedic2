@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Consulta;
+import model.Paciente;
 import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
 import utilidades.Datas;
@@ -507,9 +508,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButtonVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarActionPerformed
         if(jComboBox1.getSelectedIndex() != -1){
             PacienteDAO pdao = new PacienteDAO();
+            Paciente p = new Paciente();
             Consulta c = (Consulta) jComboBox1.getSelectedItem();
             try {
                 pdao.alterar(c.getIdpaciente(), false);
+                p = pdao.pesquisarPorId(c.getIdpaciente().getIdpaciente());
             } catch (SQLException ex) {
                 Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -530,9 +533,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (evt.getClickCount() > 1) {
             if(jComboBox1.getSelectedIndex() != -1){
             PacienteDAO pdao = new PacienteDAO();
+            Paciente p = new Paciente();
             Consulta c = (Consulta) jComboBox1.getSelectedItem();
             try {
                 pdao.alterar(c.getIdpaciente(), false);
+                p = pdao.pesquisarPorId(c.getIdpaciente().getIdpaciente());
             } catch (SQLException ex) {
                 Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }

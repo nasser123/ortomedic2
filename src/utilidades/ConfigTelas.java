@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashSet;
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -51,6 +52,11 @@ public class ConfigTelas {
     public ConfigTelas(JFrame jf) {
         this.larg = jf.getWidth();
         this.alt = jf.getHeight();
+
+    }
+    
+    public ConfigTelas(JDialog jd) {
+        
 
     }
 
@@ -103,4 +109,14 @@ public class ConfigTelas {
         jp.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
 
     }    
+    
+     public void carregarConfig(JDialog jd) {
+        
+        //faz com que a tecla ENTER funcione conforme a tecla TAB
+        HashSet conj = new HashSet(jd.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
+        jd.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+
+        jd.setTitle("Ortomedic");
+    }   
 }

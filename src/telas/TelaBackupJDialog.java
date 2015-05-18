@@ -35,8 +35,8 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
             Logger.getLogger(TelaConfiguracaoJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        ConfigTelas ct = new ConfigTelas(jPanel1, 300, 400);
-        ct.carregarConfig(jPanel1);
+        ConfigTelas ct = new ConfigTelas(this);
+        ct.carregarConfig(this);
     }
 
     /**
@@ -65,7 +65,10 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         jLabel3.setText("Backup");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 590, -1));
 
+        jButtonGeraBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/backup_save.png"))); // NOI18N
         jButtonGeraBackup.setText("Gerar Backup");
+        jButtonGeraBackup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonGeraBackup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonGeraBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGeraBackupActionPerformed(evt);
@@ -73,7 +76,10 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonGeraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 120, 80));
 
+        jButtonRestauraBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/backup_restore.png"))); // NOI18N
         jButtonRestauraBackup.setText("Restaurar Backup");
+        jButtonRestauraBackup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonRestauraBackup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonRestauraBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRestauraBackupActionPerformed(evt);

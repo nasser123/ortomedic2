@@ -264,7 +264,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         Paciente p = (Paciente) jComboBoxPacientes.getSelectedItem();
         new TelaCadastroPacienteJDialog(this, true, p, false).setVisible(true);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonNovaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaConsultaActionPerformed
@@ -279,7 +279,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
        new TelaCadastroPacienteJDialog(this, true, null, true).setVisible(true);
-       this.dispose();
+       //this.dispose();
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed

@@ -67,7 +67,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonGeraBackup">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones32/backup_save.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Gerar Backup"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGeraBackupActionPerformed"/>
@@ -80,7 +85,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRestauraBackup">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones32/backup_restore.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Restaurar Backup"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRestauraBackupActionPerformed"/>
