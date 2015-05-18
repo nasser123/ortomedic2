@@ -121,6 +121,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
 
     private void jButtonRestauraBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestauraBackupActionPerformed
         JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File("./Backup"));
        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
        int i = file.showSaveDialog(null);
        
