@@ -70,6 +70,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldPort = new javax.swing.JTextField();
+        jButtonBanco = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,7 +110,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
                 jButtonSairActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 80, 80));
+        jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 80, 80));
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -120,7 +121,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 80, 80));
+        jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 80, 80));
 
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
         jButtonSalvar.setText("Gravar");
@@ -131,12 +132,23 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
                 jButtonSalvarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 80, 80));
+        jPanel1.add(jButtonSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 80, 80));
         jPanel1.add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 209, 277, -1));
 
         jLabel7.setText("Port:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 119, -1, -1));
         jPanel1.add(jTextFieldPort, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 116, 277, -1));
+
+        jButtonBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/basic_data_32.png"))); // NOI18N
+        jButtonBanco.setText("Banco de Dados");
+        jButtonBanco.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonBanco.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBancoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 110, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,6 +193,10 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButtonBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBancoActionPerformed
+        new TelaBackupJDialog(null, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_jButtonBancoActionPerformed
     
 
     /**
@@ -227,6 +243,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBanco;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSalvar;

@@ -98,8 +98,9 @@ public class ConnectionFactoryTest {
     public void testRestauraBackup() {
         System.out.println("restauraBackup");
         String arquivo = "";
+        String database = "";
         boolean expResult = false;
-        boolean result = ConnectionFactory.restauraBackup(arquivo);
+        boolean result = ConnectionFactory.restauraBackup(arquivo, database, true);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

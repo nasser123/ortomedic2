@@ -95,8 +95,8 @@ public class ConnectionFactory {
                 File file = new File("Backup");
                 file.mkdir();
                 Date data = Datas.getCurrentTime();
-                String nomeBkp = "Backup(" + Datas.getDataString(data)+"-" + System.currentTimeMillis() + ").sql";
-                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() 
+                String nomeBkp = "Backup(" + Datas.getDataString(data) + "-" + System.currentTimeMillis() + ").sql";
+                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath()
                         + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + "mysqldump "
                         + " --user=" + ConfigurationFactory.DBUSER
                         + " --password=" + ConfigurationFactory.DBPASSWORD
@@ -141,13 +141,14 @@ public class ConnectionFactory {
     }
 
     private static boolean existeExecutavel(String arquivo) {
-        File testeMySqlDump = new File(ConfigurationFactory.DBFILE.getAbsolutePath() 
-                + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator+ arquivo);
-        if(testeMySqlDump.isFile())
+        File testeMySqlDump = new File(ConfigurationFactory.DBFILE.getAbsolutePath()
+                + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + arquivo);
+        if (testeMySqlDump.isFile()) {
             return true;
-        else
+        } else {
             return false;
-        
+        }
+
 //        File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
 //        if (ConfigurationFactory.DBFILE.exists()) {
 //            for (int i = 0; i < arquivos.length; i++) {
@@ -161,11 +162,17 @@ public class ConnectionFactory {
 //        JOptionPane.showMessageDialog(null, "Não foi encontrado arquivo " + arquivo);
 //        
 //        return false;
-        
     }
 
-    public static boolean restauraBackup(String arquivo) {
+    public static boolean restauraBackup(String arquivo, String database, boolean novo) {
         Statement s = null;
+        File teste = new File(".");
+        //se for para cadastrar banco de dados novo ignora o arquivo e seta o arquivo "TemplateSQL.sql"
+        if (novo) {
+            arquivo = "/src/utilidades/TemplateSQL.sql";
+            teste = new File(teste.getAbsolutePath() + arquivo);
+            arquivo = teste.getAbsolutePath();
+        }
         try {
             s = getConnectionWithNoDatabase().createStatement();
         } catch (SQLException ex) {
@@ -173,7 +180,10 @@ public class ConnectionFactory {
             return false;
         }
         try {
-            s.execute("CREATE DATABASE IF NOT EXISTS `ortomedic` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
+            if (novo) {
+                s.execute("DROP DATABASE IF EXISTS ORTOMEDIC");
+            }
+            s.execute("CREATE DATABASE IF NOT EXISTS `" + database + "` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -183,11 +193,11 @@ public class ConnectionFactory {
         if (existeExecutavel("mysql.exe")) {
             try {
 
-                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath() 
+                String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath()
                         + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + "mysql "
                         + " --user=" + ConfigurationFactory.DBUSER
                         + " --password=" + ConfigurationFactory.DBPASSWORD
-                        + " --host=" + ConfigurationFactory.DBHOST + " ortomedic < " + arquivo;
+                        + " --host=" + ConfigurationFactory.DBHOST + " " + database + " < " + arquivo;
                 Runtime bkp = Runtime.getRuntime();
                 System.out.println(dump);
                 bkp.exec(dump);
