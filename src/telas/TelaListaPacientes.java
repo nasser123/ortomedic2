@@ -34,7 +34,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
         jComboBoxPacientes.setVisible(false);
-        if(tela == "cadastro_consulta"){
+        if (tela == "cadastro_consulta") {
             jButtonEditar.setEnabled(false);
         }
     }
@@ -63,6 +63,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         jTextFieldFiltro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButtonSair = new javax.swing.JButton();
+        jButtonVisualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,6 +95,10 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${telefone2}"));
         columnBinding.setColumnName("Celular");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cpf}"));
+        columnBinding.setColumnName("CPF");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
@@ -189,6 +194,20 @@ public class TelaListaPacientes extends javax.swing.JFrame {
             }
         });
 
+        jButtonVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/status_32.png"))); // NOI18N
+        jButtonVisualizar.setText("Visualizar");
+        jButtonVisualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonVisualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jButtonVisualizar, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jButtonVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVisualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,6 +232,8 @@ public class TelaListaPacientes extends javax.swing.JFrame {
                                 .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonNovaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -236,7 +257,8 @@ public class TelaListaPacientes extends javax.swing.JFrame {
                     .addComponent(jButtonNovaConsulta)
                     .addComponent(jButtonEditar)
                     .addComponent(jButtonNovo)
-                    .addComponent(jButtonSair))
+                    .addComponent(jButtonSair)
+                    .addComponent(jButtonVisualizar))
                 .addContainerGap())
         );
 
@@ -273,25 +295,25 @@ public class TelaListaPacientes extends javax.swing.JFrame {
             new TelaCadastroConsulta(pac).setVisible(true);
             this.dispose();
         }
-        
+
 
     }//GEN-LAST:event_jButtonNovaConsultaActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-       new TelaCadastroPacienteJDialog(this, true, null, true).setVisible(true);
-       //this.dispose();
+        new TelaCadastroPacienteJDialog(this, true, null, true).setVisible(true);
+        //this.dispose();
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
         String filtro = jTextFieldFiltro.getText();
         pacienteQuery = entityManager.createNativeQuery("Select * from paciente where nome like '%" + filtro + "%'", Paciente.class);
         pacienteList.clear();
-        List <Paciente> teste = pacienteQuery.getResultList();
+        List<Paciente> teste = pacienteQuery.getResultList();
         pacienteList.addAll(pacienteQuery.getResultList());
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jTextFieldFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFiltroActionPerformed
-        
+
     }//GEN-LAST:event_jTextFieldFiltroActionPerformed
 
     private void jTextFieldFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFiltroKeyTyped
@@ -301,6 +323,15 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButtonVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarActionPerformed
+        if (jComboBoxPacientes.getSelectedIndex() != -1) {
+            Paciente pac = (Paciente) jComboBoxPacientes.getSelectedItem();
+            new TelaConsultasPaciente(pac, null).setVisible(true);
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_jButtonVisualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,6 +375,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNovaConsulta;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonVisualizar;
     private javax.swing.JComboBox jComboBoxPacientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
