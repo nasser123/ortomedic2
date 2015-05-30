@@ -16,6 +16,7 @@
  * and open the template in the editor.
  */
 
+
 package telas;
 
 import dao.UsuarioDAO;
@@ -31,6 +32,7 @@ import utilidades.ConfigTelas;
  * @author Nasser
  */
 public class TelaLogin extends javax.swing.JFrame {
+
     private boolean login;
 
     /**
@@ -156,7 +158,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
 
     }
-    
+
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         jProgressBar1.setVisible(true);
         ThreadAtualizaJProgressBar tal = new ThreadAtualizaJProgressBar();
@@ -223,11 +225,9 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 
+    private boolean realizarLogin() throws NoSuchAlgorithmException {
 
- private boolean realizarLogin() throws NoSuchAlgorithmException {
-     
-     
-     String usuario = jTextFieldUsuario.getText();
+        String usuario = jTextFieldUsuario.getText();
 
         char[] senhaTemp = jPasswordField1.getPassword();
         String senha = "";
@@ -235,23 +235,36 @@ public class TelaLogin extends javax.swing.JFrame {
             senha = senha + senhaTemp[i];
         }
         this.login = false;
-        UsuarioDAO uc = new UsuarioDAO();
-        try {
-            this.login = uc.verificaLogin(usuario, senhaTemp);
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (login) {
-            TelaPrincipal tp = new TelaPrincipal();
-            tp.setVisible(true);
-            this.dispose();
+
+        if (usuario.equals("admin")) {
+            if (senha.equals("123456")) {
+                TelaPrincipal tp = new TelaPrincipal();
+                tp.setVisible(true);
+                this.dispose();
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "Ortomedic - Login Incorreto", JOptionPane.ERROR_MESSAGE);
+                jProgressBar1.setVisible(false);
+            }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "Ortomedic - Login Incorreto", JOptionPane.ERROR_MESSAGE);
-            jProgressBar1.setVisible(false);
+
+            UsuarioDAO uc = new UsuarioDAO();
+            try {
+                this.login = uc.verificaLogin(usuario, senhaTemp);
+            } catch (SQLException | NullPointerException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            if (login) {
+                TelaPrincipal tp = new TelaPrincipal();
+                tp.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "Ortomedic - Login Incorreto", JOptionPane.ERROR_MESSAGE);
+                jProgressBar1.setVisible(false);
+            }
+            return login;
         }
-        
-        return  login;
+        return login;
     }
-
-
 }

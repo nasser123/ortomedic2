@@ -53,6 +53,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
         jButtonGeraBackup = new javax.swing.JButton();
         jButtonRestauraBackup = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
+        jButtonRestauraNova = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -74,7 +75,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
                 jButtonGeraBackupActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonGeraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 120, 80));
+        jPanel1.add(jButtonGeraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, 80));
 
         jButtonRestauraBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/backup_restore.png"))); // NOI18N
         jButtonRestauraBackup.setText("Restaurar Backup");
@@ -85,7 +86,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
                 jButtonRestauraBackupActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonRestauraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 120, 80));
+        jPanel1.add(jButtonRestauraBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 80));
 
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
@@ -96,7 +97,18 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
                 jButtonSairActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 120, 80));
+        jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 120, 80));
+
+        jButtonRestauraNova.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/backup_restore.png"))); // NOI18N
+        jButtonRestauraNova.setText("Restaurar Backup");
+        jButtonRestauraNova.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonRestauraNova.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonRestauraNova.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRestauraNovaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonRestauraNova, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 120, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,13 +147,22 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
 
        }else{
            File arquivo = file.getSelectedFile();
-           ConnectionFactory.restauraBackup(arquivo.getPath());
+           ConnectionFactory.restauraBackup(arquivo.getPath() , ConfigurationFactory.DATABASE, false);
        }
     }//GEN-LAST:event_jButtonRestauraBackupActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButtonRestauraNovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestauraNovaActionPerformed
+        int sair = JOptionPane.showConfirmDialog(rootPane, "Você tem certeza que deseja apagar a base atual e gerar uma nova?");
+        if (sair == 0) {
+            ConnectionFactory.restauraBackup(null , ConfigurationFactory.DATABASE, true);
+        }
+      
+           
+    }//GEN-LAST:event_jButtonRestauraNovaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +209,7 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGeraBackup;
     private javax.swing.JButton jButtonRestauraBackup;
+    private javax.swing.JButton jButtonRestauraNova;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
