@@ -152,7 +152,7 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButtonExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/excluir.png"))); // NOI18N
+        jButtonExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_remover_32.png"))); // NOI18N
         jButtonExcluir1.setMnemonic('E');
         jButtonExcluir1.setText("Excluir");
         jButtonExcluir1.setToolTipText("Excluir paciente selecionado");

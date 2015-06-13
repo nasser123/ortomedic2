@@ -82,6 +82,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItemConfig = new javax.swing.JMenuItem();
         jMenuItemBackup = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -387,6 +389,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jMenuItemUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/usuarios.png"))); // NOI18N
         jMenuItemUsuarios.setText("Usuários");
         jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,6 +398,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemUsuarios);
 
+        jMenuItemPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_32.png"))); // NOI18N
         jMenuItemPacientes.setText("Pacientes");
         jMenuItemPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,6 +407,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemPacientes);
 
+        jMenuItemConvenios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/convenio.png"))); // NOI18N
         jMenuItemConvenios.setText("Convênios");
         jMenuItemConvenios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,6 +421,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Consultas");
 
         jMenuItemListaConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jMenuItemListaConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/agenda.png"))); // NOI18N
         jMenuItemListaConsulta.setText("Lista de Consultas");
         jMenuItemListaConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,6 +431,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItemListaConsulta);
 
         jMenuItemNovaConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItemNovaConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/agenda_adiciona.png"))); // NOI18N
         jMenuItemNovaConsulta.setText("Nova Consulta");
         jMenuItemNovaConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -437,6 +444,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Ferramentas");
 
+        jMenuItemConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sistema.png"))); // NOI18N
         jMenuItemConfig.setText("Configurações de Acesso");
         jMenuItemConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -445,6 +453,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemConfig);
 
+        jMenuItemBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/basic_data_32.png"))); // NOI18N
         jMenuItemBackup.setText("Backup");
         jMenuItemBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -454,6 +463,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.add(jMenuItemBackup);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu4.setText("Ajuda");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sobre_32.png"))); // NOI18N
+        jMenuItem1.setText("Sobre");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -606,6 +634,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaListaPacientes().setVisible(true);
     }//GEN-LAST:event_jMenuItemPacientesActionPerformed
 
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new TelaSobre(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -663,7 +699,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemBackup;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemConvenios;
