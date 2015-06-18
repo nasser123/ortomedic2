@@ -469,7 +469,7 @@
                 <Component class="javax.swing.JButton" name="jButtonRelatorioExame">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icones32/exame_imprimir_32.png"/>
+                      <Image iconType="3" name="/icones32/impressora_32.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="73"/>
                     <Property name="text" type="java.lang.String" value="Imprimir"/>
@@ -596,7 +596,7 @@
                 <Component class="javax.swing.JButton" name="jButtonRelatorioReceita">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icones32/medicamento.png"/>
+                      <Image iconType="3" name="/icones32/impressora_32.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="73"/>
                     <Property name="text" type="java.lang.String" value="Imprimir"/>

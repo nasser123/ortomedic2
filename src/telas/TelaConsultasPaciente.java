@@ -248,7 +248,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(jTextAreaExames);
 
-        jButtonRelatorioExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/exame_imprimir_32.png"))); // NOI18N
+        jButtonRelatorioExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/impressora_32.png"))); // NOI18N
         jButtonRelatorioExame.setMnemonic('I');
         jButtonRelatorioExame.setText("Imprimir");
         jButtonRelatorioExame.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -310,7 +310,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         jScrollPane6.setViewportView(jTextAreaControlado);
 
-        jButtonRelatorioReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/medicamento.png"))); // NOI18N
+        jButtonRelatorioReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/impressora_32.png"))); // NOI18N
         jButtonRelatorioReceita.setMnemonic('I');
         jButtonRelatorioReceita.setText("Imprimir");
         jButtonRelatorioReceita.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
