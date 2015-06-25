@@ -90,7 +90,6 @@ public class ExecutaRelatorio {
 
     public void abrirRelatorio(String relatorio, String titulo) {
         InputStream inputStream = getClass().getResourceAsStream("testeRelatorio2.jasper");
-        
         Map<String, Object> parametros = new HashMap<String, Object>();
         try {
             // abre o relatório

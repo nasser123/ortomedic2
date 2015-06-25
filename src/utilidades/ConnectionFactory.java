@@ -28,7 +28,15 @@ public class ConnectionFactory {
     private static Connection connection;
     private static Connection connectionNoDatabase;
     private static EntityManager entityManager;
+    private final String classe = getClass().getCanonicalName();
 
+
+    private String getClasse(){
+        return getClass().getCanonicalName();
+    }
+    
+    public ConnectionFactory(){
+    }
     public static Connection getConnection() {
         if (connection == null) {
             Section config = ConfigurationFactory.getConfiguration();
@@ -167,9 +175,10 @@ public class ConnectionFactory {
     public static boolean restauraBackup(String arquivo, String database, boolean novo) {
         Statement s = null;
         File teste = new File(".");
+        
         //se for para cadastrar banco de dados novo ignora o arquivo e seta o arquivo "TemplateSQL.sql"
         if (novo) {
-            arquivo = "/src/utilidades/TemplateSQL.sql";
+            arquivo = "ortomedic/TemplateSQL.sql";
             teste = new File(teste.getAbsolutePath() + arquivo);
             arquivo = teste.getAbsolutePath();
         }
