@@ -242,7 +242,9 @@ public class Consulta implements Serializable {
     }
 
     public void setAtestado(String atestado) {
+        String oldAtestado = this.atestado;
         this.atestado = atestado;
+        changeSupport.firePropertyChange("atestado", oldAtestado, atestado);
     }
 
     public String getLaudo() {
@@ -250,7 +252,9 @@ public class Consulta implements Serializable {
     }
 
     public void setLaudo(String laudo) {
+        String oldLaudo = this.laudo;
         this.laudo = laudo;
+        changeSupport.firePropertyChange("laudo", oldLaudo, laudo);
     }
     
 }

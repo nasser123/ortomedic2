@@ -305,15 +305,15 @@ public class TelaListaConsultas extends javax.swing.JFrame {
       int excluir = JOptionPane.showConfirmDialog(rootPane, "Você tem certeza que deseja excluir essa consulta?");
         if (excluir == 0) {
             if (this.jComboBox1.getSelectedIndex() != -1) {
+                boolean excluiu = false;
                 Consulta c = (Consulta) jComboBox1.getSelectedItem();
                 ConsultaDAO cDAO = new ConsultaDAO();
                 try {
-                    cDAO.excluir(c);
+                   excluiu =  cDAO.excluir(c);
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaCadastroConsulta.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                new TelaListaConsultas().setVisible(true);
-                this.dispose();
+                consultaList.remove(c);
             }
         }  
         

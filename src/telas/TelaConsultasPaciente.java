@@ -6,6 +6,7 @@
 
 package telas;
 
+import dao.ConsultaDAO;
 import dao.PacienteDAO;
 import java.sql.SQLException;
 import java.util.Date;
@@ -71,6 +72,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
         jComboBoxConsultas = new javax.swing.JComboBox();
         jButtonNovo = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -104,6 +106,12 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButtonCadastroPaciente = new javax.swing.JButton();
+
+        paciente1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                paciente1PropertyChange(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -156,6 +164,17 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
+        jButtonCancelar.setMnemonic('C');
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -166,6 +185,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 .addGap(243, 243, 243)
                 .addComponent(jComboBoxConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,14 +194,18 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonCancelar)
                     .addComponent(jComboBoxConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonNovo)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonSair)))
         );
+
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${consultaList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, paciente1, eLProperty, jTable1);
@@ -245,7 +270,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(jTextAreaExames);
 
-        jButtonRelatorioExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/exame_imprimir_32.png"))); // NOI18N
+        jButtonRelatorioExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/impressora_32.png"))); // NOI18N
         jButtonRelatorioExame.setMnemonic('I');
         jButtonRelatorioExame.setText("Imprimir");
         jButtonRelatorioExame.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -307,7 +332,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         jScrollPane6.setViewportView(jTextAreaControlado);
 
-        jButtonRelatorioReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/medicamento.png"))); // NOI18N
+        jButtonRelatorioReceita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/impressora_32.png"))); // NOI18N
         jButtonRelatorioReceita.setMnemonic('I');
         jButtonRelatorioReceita.setText("Imprimir");
         jButtonRelatorioReceita.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -542,7 +567,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -654,6 +679,14 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        entityManager.refresh(paciente1);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void paciente1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_paciente1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paciente1PropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -693,6 +726,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButtonCadastroPaciente;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonRelatorioAtestado;
     private javax.swing.JButton jButtonRelatorioExame;

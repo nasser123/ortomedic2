@@ -407,7 +407,7 @@
             <Component class="javax.swing.JButton" name="jButtonExcluir1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icones32/excluir.png"/>
+                  <Image iconType="3" name="/icones32/paciente_remover_32.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="69"/>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
