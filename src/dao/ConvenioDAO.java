@@ -47,12 +47,14 @@ public class ConvenioDAO implements IDao {
     public boolean inserir(Object convenio) throws SQLException {
         if (convenio instanceof Convenio) {
             Convenio c = (Convenio) convenio;
-            if (!existeConvenio(c.getDescricao())) {
-                entity.getTransaction().begin();
-                entity.persist(c);
-                entity.getTransaction().commit();
-                JOptionPane.showMessageDialog(null, "Convênio salvo com sucesso.");
-                return true;
+            if (ehNome(c)) {
+                if (!existeConvenio(c.getDescricao())) {
+                    entity.getTransaction().begin();
+                    entity.persist(c);
+                    entity.getTransaction().commit();
+                    JOptionPane.showMessageDialog(null, "Convênio salvo com sucesso.");
+                    return true;
+                }
             }
         }
         return false;
@@ -60,15 +62,16 @@ public class ConvenioDAO implements IDao {
 
     public boolean inserir(String descricao, String observacoes) throws SQLException {
         Convenio c = new Convenio(descricao, observacoes);
-
-        if (!existeConvenio(c.getDescricao())) {
-            if (!entity.getTransaction().isActive()) {
-                entity.getTransaction().begin();
+        if (ehNome(c)) {
+            if (!existeConvenio(c.getDescricao())) {
+                if (!entity.getTransaction().isActive()) {
+                    entity.getTransaction().begin();
+                }
+                entity.persist(c);
+                entity.getTransaction().commit();
+                JOptionPane.showMessageDialog(null, "Convênio salvo com sucesso.");
+                return true;
             }
-            entity.persist(c);
-            entity.getTransaction().commit();
-            JOptionPane.showMessageDialog(null, "Convênio salvo com sucesso.");
-            return true;
         }
         return false;
     }
@@ -101,6 +104,16 @@ public class ConvenioDAO implements IDao {
         return false;
     }
 
+    private boolean ehNome(Convenio convenio) {
+        if (convenio.getDescricao().equals("") || convenio.getDescricao() == null) {
+            JOptionPane.showMessageDialog(null, "Nome do convenio inválido");
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
     @Override
     public Convenio pesquisarPorId(int id) throws SQLException {
         Convenio c = null;
@@ -116,15 +129,17 @@ public class ConvenioDAO implements IDao {
     public boolean alterar(Object objeto, boolean mensagem) throws SQLException {
         if (objeto instanceof Convenio) {
             Convenio c = (Convenio) objeto;
-            if (!entity.getTransaction().isActive()) {
-                entity.getTransaction().begin();
+            if (ehNome(c)) {
+                if (!entity.getTransaction().isActive()) {
+                    entity.getTransaction().begin();
+                }
+                entity.merge(c);
+                entity.getTransaction().commit();
+                if (mensagem) {
+                    JOptionPane.showMessageDialog(null, "Convênio alterado com sucesso.");
+                }
+                return true;
             }
-            entity.merge(c);
-            entity.getTransaction().commit();
-            if (mensagem) {
-                JOptionPane.showMessageDialog(null, "Convênio alterado com sucesso.");
-            }
-            return true;
         }
         return false;
     }
