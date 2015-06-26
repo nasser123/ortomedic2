@@ -187,9 +187,9 @@
                       <Component id="jTextFieldCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxTipoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="67" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                   <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -219,9 +219,9 @@
                   <Group type="102" attributes="0">
                       <Component id="jButtonNovo" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonEditar" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonExcluir" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonEditar" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="355" max="-2" attributes="0"/>
                       <Component id="jButtonSair" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -248,8 +248,9 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/usuario_deletar.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="69"/>
+                <Property name="mnemonic" type="int" value="120"/>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Excluir usu&#xe1;rio"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -267,6 +268,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="78"/>
                 <Property name="text" type="java.lang.String" value="Novo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Novo usu&#xe1;rio"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -279,8 +281,9 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/usuario_editar.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="68"/>
+                <Property name="mnemonic" type="int" value="101"/>
                 <Property name="text" type="java.lang.String" value="Editar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Editar usu&#xe1;rio"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -298,6 +301,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="toolTipText" type="java.lang.String" value="Sair"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>

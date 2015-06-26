@@ -27,14 +27,25 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
     Paciente pac;
     PacienteDAO pDAO;
     boolean novo;
-
-    public TelaCadastroPacienteJDialog(java.awt.Frame parent, boolean modal, Paciente paciente, boolean novo) {
+    
+    /**
+     * 
+     * @param parent
+     * @param modal
+     * @param paciente
+     * @param novo
+     * @param detalhar Se for aberta janela para detalhar paciente (true) se for novo paciente (false)
+     */
+    public TelaCadastroPacienteJDialog(java.awt.Frame parent, boolean modal, Paciente paciente, boolean novo, boolean detalhar) {
         super(parent, modal);
         this.pac = paciente;
         this.novo = novo;
         initComponents();
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
+        if (detalhar){
+            jButtonPesquisar1.setEnabled(false);
+        }
 
     }
 
@@ -75,7 +86,6 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
         jDateChooserDataNascimento = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
         jButtonExcluir1 = new javax.swing.JButton();
-        jButtonNovo = new javax.swing.JButton();
         jButtonSalvar1 = new javax.swing.JButton();
         jButtonSair1 = new javax.swing.JButton();
         jButtonPesquisar1 = new javax.swing.JButton();
@@ -153,7 +163,7 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jButtonExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_remover_32.png"))); // NOI18N
-        jButtonExcluir1.setMnemonic('E');
+        jButtonExcluir1.setMnemonic('x');
         jButtonExcluir1.setText("Excluir");
         jButtonExcluir1.setToolTipText("Excluir paciente selecionado");
         jButtonExcluir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -161,18 +171,6 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
         jButtonExcluir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExcluir1ActionPerformed(evt);
-            }
-        });
-
-        jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_adicionar_32.png"))); // NOI18N
-        jButtonNovo.setMnemonic('N');
-        jButtonNovo.setText("Novo");
-        jButtonNovo.setToolTipText("Cadastrar novo paciente");
-        jButtonNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNovoActionPerformed(evt);
             }
         });
 
@@ -217,14 +215,12 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(315, 315, 315)
+                .addGap(401, 401, 401)
                 .addComponent(jButtonSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -235,7 +231,6 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonSair1)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButtonNovo, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButtonExcluir1, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButtonSalvar1, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButtonPesquisar1, javax.swing.GroupLayout.Alignment.TRAILING))))
@@ -400,11 +395,6 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonExcluir1ActionPerformed
 
-    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        new TelaCadastroPacienteJDialog(null, true, null, true).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonNovoActionPerformed
-
     private void jButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar1ActionPerformed
         pDAO = new PacienteDAO();
         boolean gravou = false;
@@ -515,7 +505,6 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
     private renderizadores.ConvenioListCellRenderer convenioListCellRenderer1;
     private javax.persistence.Query convenioQuery;
     private javax.swing.JButton jButtonExcluir1;
-    private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonPesquisar1;
     private javax.swing.JButton jButtonSair1;
     private javax.swing.JButton jButtonSalvar1;

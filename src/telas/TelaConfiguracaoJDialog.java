@@ -102,6 +102,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPanel1.add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 178, 277, -1));
 
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
+        jButtonSair.setMnemonic('s');
         jButtonSair.setText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -113,6 +114,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPanel1.add(jButtonSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 80, 80));
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
+        jButtonCancelar.setMnemonic('c');
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -124,7 +126,8 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 80, 80));
 
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
-        jButtonSalvar.setText("Gravar");
+        jButtonSalvar.setMnemonic('a');
+        jButtonSalvar.setText("Salvar");
         jButtonSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +143,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPanel1.add(jTextFieldPort, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 116, 277, -1));
 
         jButtonBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/basic_data_32.png"))); // NOI18N
+        jButtonBanco.setMnemonic('b');
         jButtonBanco.setText("Banco de Dados");
         jButtonBanco.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonBanco.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

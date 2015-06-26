@@ -71,13 +71,14 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldUsuario.setText("nasser");
+        jTextFieldUsuario.setToolTipText("Nome do usuário");
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 220, -1));
 
         jButtonEntrar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/entrar.png"))); // NOI18N
         jButtonEntrar.setMnemonic('E');
         jButtonEntrar.setText("Entrar");
-        jButtonEntrar.setToolTipText("Alt+E");
+        jButtonEntrar.setToolTipText("Entrar no sistema");
         jButtonEntrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonEntrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +95,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         jPasswordField1.setText("123456");
+        jPasswordField1.setToolTipText("Digite a senha");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -109,7 +111,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setMnemonic('S');
         jButtonSair.setText("Sair");
-        jButtonSair.setToolTipText("Alt+S");
+        jButtonSair.setToolTipText("Sair do sistema");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +126,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sistema.png"))); // NOI18N
+        jButton1.setToolTipText("Configurações");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

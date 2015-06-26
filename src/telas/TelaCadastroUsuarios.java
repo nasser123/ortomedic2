@@ -106,6 +106,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
         jButtonCancelar.setMnemonic('C');
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setToolTipText("Cancelar alterações");
         jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +118,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
         jButtonSalvar.setMnemonic('A');
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.setToolTipText("Salvar alterações");
         jButtonSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +130,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setMnemonic('S');
         jButtonSair.setText("Sair");
+        jButtonSair.setToolTipText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +142,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jButtonSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/senha.png"))); // NOI18N
         jButtonSenha.setMnemonic('L');
         jButtonSenha.setText("Alterar");
+        jButtonSenha.setToolTipText("Alterar senha");
         jButtonSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSenha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSenha.addActionListener(new java.awt.event.ActionListener() {

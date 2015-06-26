@@ -238,8 +238,9 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/agenda_remover_32.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="69"/>
+                <Property name="mnemonic" type="int" value="120"/>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Excluir consulta"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -254,6 +255,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="65"/>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Salvar consulta"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -268,6 +270,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="toolTipText" type="java.lang.String" value="Sair"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -278,10 +281,11 @@
             <Component class="javax.swing.JButton" name="jButtonPesquisar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icones32/paciente_32.png"/>
+                  <Image iconType="3" name="/icones32/paciente_pesquisar32.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="80"/>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Pesquisar paciente"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -381,6 +385,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Compareceu"/>
+            <Property name="toolTipText" type="java.lang.String" value="Marcar se o paciente compareceu &#xe0; consulta"/>
           </Properties>
         </Component>
       </SubComponents>

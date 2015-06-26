@@ -250,6 +250,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="67"/>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Cancelar altera&#xe7;&#xf5;es"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -264,6 +265,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="65"/>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Salvar altera&#xe7;&#xf5;es"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -278,6 +280,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="toolTipText" type="java.lang.String" value="Sair"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -292,6 +295,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="76"/>
                 <Property name="text" type="java.lang.String" value="Alterar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alterar senha"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>

@@ -70,6 +70,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
         jButtonVisualizar = new javax.swing.JButton();
         jButtonExcluir1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,6 +110,11 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(250);
@@ -131,7 +137,9 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_editar_32.png"))); // NOI18N
+        jButtonEditar.setMnemonic('e');
         jButtonEditar.setText("Editar");
+        jButtonEditar.setToolTipText("Editar paciente");
         jButtonEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -145,7 +153,9 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         });
 
         jButtonNovaConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/agenda_adiciona.png"))); // NOI18N
+        jButtonNovaConsulta.setMnemonic('c');
         jButtonNovaConsulta.setText("Consulta");
+        jButtonNovaConsulta.setToolTipText("Cadastrar nova consulta");
         jButtonNovaConsulta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovaConsulta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -159,7 +169,9 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         });
 
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_adicionar_32.png"))); // NOI18N
+        jButtonNovo.setMnemonic('n');
         jButtonNovo.setText("Novo");
+        jButtonNovo.setToolTipText("Novo paciente");
         jButtonNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +180,10 @@ public class TelaListaPacientes extends javax.swing.JFrame {
             }
         });
 
+        jButtonFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/filtro16.png"))); // NOI18N
+        jButtonFiltrar.setMnemonic('f');
         jButtonFiltrar.setText("Filtrar/Atualizar");
+        jButtonFiltrar.setToolTipText("Filtrar lista de pacientes");
         jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFiltrarActionPerformed(evt);
@@ -191,7 +206,9 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         jLabel1.setText("Lista de pacientes");
 
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
+        jButtonSair.setMnemonic('s');
         jButtonSair.setText("Sair");
+        jButtonSair.setToolTipText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +218,9 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         });
 
         jButtonVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/status_32.png"))); // NOI18N
+        jButtonVisualizar.setMnemonic('v');
         jButtonVisualizar.setText("Visualizar");
+        jButtonVisualizar.setToolTipText("Visualizar consultas");
         jButtonVisualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonVisualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -215,7 +234,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         });
 
         jButtonExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_remover_32.png"))); // NOI18N
-        jButtonExcluir1.setMnemonic('E');
+        jButtonExcluir1.setMnemonic('x');
         jButtonExcluir1.setText("Excluir");
         jButtonExcluir1.setToolTipText("Excluir paciente selecionado");
         jButtonExcluir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -230,16 +249,20 @@ public class TelaListaPacientes extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Filtro");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButtonFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonFiltrar)
+                .addGap(128, 128, 128)
                 .addComponent(jComboBoxPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -251,9 +274,9 @@ public class TelaListaPacientes extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonNovaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -269,14 +292,20 @@ public class TelaListaPacientes extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonFiltrar)
-                    .addComponent(jComboBoxPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonFiltrar)
+                            .addComponent(jComboBoxPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonNovaConsulta)
                     .addComponent(jButtonEditar)
@@ -310,7 +339,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         Paciente p = (Paciente) jComboBoxPacientes.getSelectedItem();
-        new TelaCadastroPacienteJDialog(this, true, p, false).setVisible(true);
+        new TelaCadastroPacienteJDialog(this, true, p, false, true).setVisible(true);
         //this.dispose();
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
@@ -325,7 +354,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNovaConsultaActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        new TelaCadastroPacienteJDialog(this, true, null, true).setVisible(true);
+        new TelaCadastroPacienteJDialog(this, true, null, true, false).setVisible(true);
         jButtonFiltrarActionPerformed(evt);
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
@@ -352,6 +381,12 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     private void jButtonVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarActionPerformed
         if (jComboBoxPacientes.getSelectedIndex() != -1) {
             Paciente pac = (Paciente) jComboBoxPacientes.getSelectedItem();
+            PacienteDAO pDAO = new PacienteDAO();
+            try {
+                pac = pDAO.pesquisarPorId(pac.getIdpaciente());
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaListaPacientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
             new TelaConsultasPaciente(pac, null).setVisible(true);
             this.dispose();
         }
@@ -359,7 +394,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVisualizarActionPerformed
 
     private void jButtonExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluir1ActionPerformed
-        Paciente pac = (Paciente)jComboBoxPacientes.getSelectedItem();
+        Paciente pac = (Paciente) jComboBoxPacientes.getSelectedItem();
         PacienteDAO pDAO = new PacienteDAO();
         int excluir = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir esse paciente?");
         if (excluir == 0) {
@@ -369,11 +404,27 @@ public class TelaListaPacientes extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCadastroPacienteJDialog.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(excluiu){
+            if (excluiu) {
                 pacienteList.remove(pac);
             }
         }
     }//GEN-LAST:event_jButtonExcluir1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() > 1) {
+            if (jComboBoxPacientes.getSelectedIndex() != -1) {
+                PacienteDAO pdao = new PacienteDAO();
+                Paciente p = (Paciente) jComboBoxPacientes.getSelectedItem();
+                try {
+                    pdao.alterar(p, false);
+                    p = pdao.pesquisarPorId(p.getIdpaciente());
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                new TelaCadastroPacienteJDialog(this, true, p, false, true).setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -421,6 +472,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVisualizar;
     private javax.swing.JComboBox jComboBoxPacientes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

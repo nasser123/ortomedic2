@@ -79,11 +79,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="jTextFieldFiltro" min="-2" pref="253" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jButtonFiltrar" min="-2" pref="135" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTextFieldFiltro" pref="253" max="32767" attributes="0"/>
+                      <Component id="jLabel2" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonFiltrar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                   <Component id="jComboBoxPacientes" min="-2" pref="92" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -96,9 +99,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jButtonNovo" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonEditar" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButtonExcluir1" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButtonEditar" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButtonNovaConsulta" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -121,15 +124,24 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonFiltrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxPacientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonFiltrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxPacientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldFiltro" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="402" max="-2" attributes="0"/>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButtonNovaConsulta" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonEditar" min="-2" max="-2" attributes="0"/>
@@ -239,6 +251,9 @@
                   </Subbinding>
                 </BindingProperty>
               </BindingProperties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -253,7 +268,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/paciente_editar_32.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="101"/>
             <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Editar paciente"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -269,7 +286,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/agenda_adiciona.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="99"/>
             <Property name="text" type="java.lang.String" value="Consulta"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cadastrar nova consulta"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -285,7 +304,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/paciente_adicionar_32.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="110"/>
             <Property name="text" type="java.lang.String" value="Novo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Novo paciente"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -295,7 +316,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonFiltrar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icones32/filtro16.png"/>
+            </Property>
+            <Property name="mnemonic" type="int" value="102"/>
             <Property name="text" type="java.lang.String" value="Filtrar/Atualizar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Filtrar lista de pacientes"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFiltrarActionPerformed"/>
@@ -321,7 +347,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/sair.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="115"/>
             <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="toolTipText" type="java.lang.String" value="Sair"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -334,7 +362,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/status_32.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="118"/>
             <Property name="text" type="java.lang.String" value="Visualizar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Visualizar consultas"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -350,7 +380,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/paciente_remover_32.png"/>
             </Property>
-            <Property name="mnemonic" type="int" value="69"/>
+            <Property name="mnemonic" type="int" value="120"/>
             <Property name="text" type="java.lang.String" value="Excluir"/>
             <Property name="toolTipText" type="java.lang.String" value="Excluir paciente selecionado"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -362,6 +392,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluir1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Filtro"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

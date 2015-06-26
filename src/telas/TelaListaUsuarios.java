@@ -85,8 +85,9 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/usuario_deletar.png"))); // NOI18N
-        jButtonExcluir.setMnemonic('E');
+        jButtonExcluir.setMnemonic('x');
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setToolTipText("Excluir usuário");
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -102,6 +103,7 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/usuario_adicionar.png"))); // NOI18N
         jButtonNovo.setMnemonic('N');
         jButtonNovo.setText("Novo");
+        jButtonNovo.setToolTipText("Novo usuário");
         jButtonNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -111,8 +113,9 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
         });
 
         jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/usuario_editar.png"))); // NOI18N
-        jButtonEditar.setMnemonic('D');
+        jButtonEditar.setMnemonic('e');
         jButtonEditar.setText("Editar");
+        jButtonEditar.setToolTipText("Editar usuário");
         jButtonEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -128,6 +131,7 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setMnemonic('S');
         jButtonSair.setText("Sair");
+        jButtonSair.setToolTipText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -143,9 +147,9 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(355, 355, 355)
                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -319,9 +323,9 @@ public class TelaListaUsuarios extends javax.swing.JFrame {
                     .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

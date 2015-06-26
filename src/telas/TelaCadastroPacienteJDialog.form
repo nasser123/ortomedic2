@@ -373,14 +373,12 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButtonNovo" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonExcluir1" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonPesquisar1" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonSalvar1" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="401" max="-2" attributes="0"/>
                       <Component id="jButtonSair1" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -393,7 +391,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButtonSair1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="jButtonNovo" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonExcluir1" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonSalvar1" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonPesquisar1" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -409,7 +406,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/paciente_remover_32.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="69"/>
+                <Property name="mnemonic" type="int" value="120"/>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
                 <Property name="toolTipText" type="java.lang.String" value="Excluir paciente selecionado"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -417,21 +414,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluir1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonNovo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icones32/paciente_adicionar_32.png"/>
-                </Property>
-                <Property name="mnemonic" type="int" value="78"/>
-                <Property name="text" type="java.lang.String" value="Novo"/>
-                <Property name="toolTipText" type="java.lang.String" value="Cadastrar novo paciente"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="verticalTextPosition" type="int" value="3"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNovoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSalvar1">

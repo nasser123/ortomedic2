@@ -235,15 +235,14 @@
                                   <Component id="jPanel3" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                                          <Component id="jDateChooserData" min="-2" pref="187" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jDateChooserData" min="-2" pref="187" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                  <Component id="jButtonPesquisaConsulta" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButtonPesquisaConsulta" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -280,22 +279,18 @@
                           <Component id="jButtonListaConsulta" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                           <Component id="jButtonUsuarios" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDateChooserData" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonPesquisaConsulta" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDateChooserData" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jButtonPesquisaConsulta" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -364,8 +359,9 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/status_32.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="73"/>
+                <Property name="mnemonic" type="int" value="86"/>
                 <Property name="text" type="java.lang.String" value="Visualizar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Visualizar consulta"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -381,8 +377,9 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/agenda_editar_32.png"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="68"/>
+                <Property name="mnemonic" type="int" value="101"/>
                 <Property name="text" type="java.lang.String" value="Editar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Editar consulta agendada"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -400,6 +397,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="toolTipText" type="java.lang.String" value="Sair do sistema"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -412,7 +410,9 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icones32/salvar.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gravar"/>
+                <Property name="mnemonic" type="int" value="97"/>
+                <Property name="text" type="java.lang.String" value="Salvar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Salvar as altera&#xe7;&#xf5;es"/>
                 <Property name="enabled" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="true" type="code"/>
                 </Property>
@@ -430,7 +430,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/contato.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="111"/>
             <Property name="text" type="java.lang.String" value="Conv&#xea;nios"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cadastro de Conv&#xea;nios"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
@@ -442,7 +444,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/usuarios.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="85"/>
             <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+            <Property name="toolTipText" type="java.lang.String" value="Lista de usu&#xe1;rios"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
@@ -454,7 +458,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/paciente_32.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="112"/>
             <Property name="text" type="java.lang.String" value="Pacientes"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cadastro de Pacientes"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
@@ -466,7 +472,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/agenda_adiciona.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="67"/>
             <Property name="text" type="java.lang.String" value="Cadastrar Consulta"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cadastrar nova consulta"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
@@ -478,7 +486,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/agenda.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="76"/>
             <Property name="text" type="java.lang.String" value="Lista Consultas"/>
+            <Property name="toolTipText" type="java.lang.String" value="Lista de consultas cadastradas"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
@@ -492,7 +502,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/pesquisar2.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pesquisar"/>
+            <Property name="mnemonic" type="int" value="80"/>
+            <Property name="text" type="java.lang.String" value="Pesquisar/Atualizar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Pesquisar consultas marcadas"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPesquisaConsultaActionPerformed"/>

@@ -257,4 +257,12 @@ public class Consulta implements Serializable {
         changeSupport.firePropertyChange("laudo", oldLaudo, laudo);
     }
     
+    public boolean podeExcluir(){
+        if((this.exames != null) || (this.sintomas != null) || this.laudo != null || this.medicacao != null || this.receita != null ||
+                (this.exames != "") || (this.sintomas != "") || this.laudo != "" || this.medicacao != "" || this.receita != "")
+            return false;
+        else
+            return true;
+    }
+    
 }

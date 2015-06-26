@@ -162,8 +162,9 @@ public class TelaCadastroConsulta extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/agenda_remover_32.png"))); // NOI18N
-        jButtonExcluir.setMnemonic('E');
+        jButtonExcluir.setMnemonic('x');
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setToolTipText("Excluir consulta");
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +176,7 @@ public class TelaCadastroConsulta extends javax.swing.JFrame {
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
         jButtonSalvar.setMnemonic('A');
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.setToolTipText("Salvar consulta");
         jButtonSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +188,7 @@ public class TelaCadastroConsulta extends javax.swing.JFrame {
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setMnemonic('S');
         jButtonSair.setText("Sair");
+        jButtonSair.setToolTipText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -194,9 +197,10 @@ public class TelaCadastroConsulta extends javax.swing.JFrame {
             }
         });
 
-        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_32.png"))); // NOI18N
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/paciente_pesquisar32.png"))); // NOI18N
         jButtonPesquisar.setMnemonic('P');
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.setToolTipText("Pesquisar paciente");
         jButtonPesquisar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPesquisar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +260,7 @@ public class TelaCadastroConsulta extends javax.swing.JFrame {
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Compareceu");
+        jCheckBox1.setToolTipText("Marcar se o paciente compareceu à consulta");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

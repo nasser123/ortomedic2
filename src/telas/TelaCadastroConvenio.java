@@ -9,6 +9,7 @@ import dao.ConvenioDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Convenio;
 import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
@@ -59,6 +60,7 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
         jTextFieldCodigo = new javax.swing.JTextField();
         jTextFieldDescricao = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,6 +82,7 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/cancelar.png"))); // NOI18N
         jButtonCancelar.setMnemonic('C');
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setToolTipText("Cancelar alterações");
         jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +94,7 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
         jButtonSalvar.setMnemonic('A');
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.setToolTipText("Salvar");
         jButtonSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,26 +114,41 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
             }
         });
 
+        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/excluir.png"))); // NOI18N
+        jButtonExcluir.setMnemonic('x');
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setToolTipText("Excluir convênio");
+        jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
+                .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 22, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonSalvar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonSair, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jButtonSair, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonExcluir, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         jTextFieldCodigo.setEditable(false);
@@ -187,7 +206,7 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -213,25 +232,44 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        new TelaListaConvenio().setVisible(true);
-        this.dispose();
+        jButtonSairActionPerformed(evt);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         ConvenioDAO cDAO = new ConvenioDAO();
         this.con.setDescricao(jTextFieldDescricao.getText());
         this.con.setObservacoes(jTextAreaObservacoes.getText());
+        boolean gravou = false;
         try {
             if (this.con.getIdconvenio() == null) {
-                cDAO.inserir(this.con);
+                gravou = cDAO.inserir(this.con);
             } else {
-                cDAO.alterar(this.con, true);
+                gravou = cDAO.alterar(this.con, true);
             }
         } catch (SQLException ex) {
             Logger.getLogger(TelaListaConvenio.class.getName()).log(Level.SEVERE, null, ex);
-
+        }
+        if (gravou) {
+            jButtonSairActionPerformed(evt);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        int excluir = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir esse convênio?");
+        boolean excluiu = false;
+        if (excluir == 0) {
+            try {
+                ConvenioDAO cDAO = new ConvenioDAO();
+                excluiu = cDAO.excluir(con);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaListaConvenio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (excluiu) {
+                jButtonSairActionPerformed(evt);
+            }
+        }
+
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,6 +309,7 @@ public class TelaCadastroConvenio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabel1;

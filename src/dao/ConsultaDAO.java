@@ -27,9 +27,7 @@ import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import model.Consulta;
 import model.Paciente;
-import model.Usuario;
 import utilidades.ConnectionFactory;
-import utilidades.Datas;
 
 /**
  *
@@ -74,12 +72,15 @@ public class ConsultaDAO implements IDao {
     public boolean excluir(Object Consulta) throws SQLException {
         if (Consulta instanceof Consulta) {
             Consulta c = (Consulta) Consulta;
-            if (!entity.getTransaction().isActive()) {
-                entity.getTransaction().begin();
-                entity.remove(c);
-                entity.getTransaction().commit();
-                JOptionPane.showMessageDialog(null, "Consulta excluida com sucesso.");
-                return true;
+            if (c.podeExcluir()) {
+                if (!entity.getTransaction().isActive()) {
+                    entity.getTransaction().begin();
+                    entity.remove(c);
+                    entity.refresh(c.getIdpaciente());
+                    entity.getTransaction().commit();
+                    JOptionPane.showMessageDialog(null, "Consulta excluida com sucesso.");
+                    return true;
+                }
             }
         }
         JOptionPane.showMessageDialog(null, "Essa consulta não pode ser excluida.");
@@ -92,6 +93,13 @@ public class ConsultaDAO implements IDao {
         List consulta = entity.createNamedQuery("Consulta.findByIdconsulta").setParameter("idconsulta", id).getResultList();
         if (!consulta.isEmpty()) {
             c = (Consulta) consulta.get(0);
+            try {
+                entity.refresh(c);
+            } catch (javax.persistence.EntityNotFoundException enfe) {
+                enfe.printStackTrace();
+                return null;
+            }
+
             return c;
         }
         return null;

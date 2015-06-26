@@ -76,8 +76,9 @@ public class TelaListaConvenio extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/excluir.png"))); // NOI18N
-        jButtonExcluir.setMnemonic('E');
+        jButtonExcluir.setMnemonic('x');
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setToolTipText("Excluir convênio");
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -93,6 +94,7 @@ public class TelaListaConvenio extends javax.swing.JFrame {
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/adicionar.png"))); // NOI18N
         jButtonNovo.setMnemonic('N');
         jButtonNovo.setText("Novo");
+        jButtonNovo.setToolTipText("Novo convênio");
         jButtonNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -102,8 +104,9 @@ public class TelaListaConvenio extends javax.swing.JFrame {
         });
 
         jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/editar.png"))); // NOI18N
-        jButtonEditar.setMnemonic('D');
+        jButtonEditar.setMnemonic('e');
         jButtonEditar.setText("Editar");
+        jButtonEditar.setToolTipText("Editar convênio");
         jButtonEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -119,6 +122,7 @@ public class TelaListaConvenio extends javax.swing.JFrame {
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
         jButtonSair.setMnemonic('S');
         jButtonSair.setText("Sair");
+        jButtonSair.setToolTipText("Sair");
         jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -135,9 +139,9 @@ public class TelaListaConvenio extends javax.swing.JFrame {
                 .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(304, 304, 304)
+                .addGap(316, 316, 316)
                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

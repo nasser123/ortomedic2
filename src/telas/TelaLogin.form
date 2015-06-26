@@ -47,6 +47,7 @@
         <Component class="javax.swing.JTextField" name="jTextFieldUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="nasser"/>
+            <Property name="toolTipText" type="java.lang.String" value="Nome do usu&#xe1;rio"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -64,7 +65,7 @@
             </Property>
             <Property name="mnemonic" type="int" value="69"/>
             <Property name="text" type="java.lang.String" value="Entrar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Alt+E"/>
+            <Property name="toolTipText" type="java.lang.String" value="Entrar no sistema"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -100,6 +101,7 @@
         <Component class="javax.swing.JPasswordField" name="jPasswordField1">
           <Properties>
             <Property name="text" type="java.lang.String" value="123456"/>
+            <Property name="toolTipText" type="java.lang.String" value="Digite a senha"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
@@ -131,7 +133,7 @@
             </Property>
             <Property name="mnemonic" type="int" value="83"/>
             <Property name="text" type="java.lang.String" value="Sair"/>
-            <Property name="toolTipText" type="java.lang.String" value="Alt+S"/>
+            <Property name="toolTipText" type="java.lang.String" value="Sair do sistema"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -165,6 +167,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones32/sistema.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

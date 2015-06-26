@@ -96,6 +96,7 @@ public class ConfigurationFactory {
             DBPORT = config.get("db.port");
             DBUSER = config.get("db.user");
             DBPASSWORD = config.get("db.password");
+            ARCHITECTURE = System.getProperty("os.arch");
             DBDIR = "mysql";
             DBFILE = new File(DBDIR);
         }

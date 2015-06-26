@@ -6,12 +6,14 @@
 package telas;
 
 import dao.ConsultaDAO;
+import dao.PacienteDAO;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Consulta;
+import model.Paciente;
 import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
 
@@ -30,7 +32,7 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         initComponents();
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
-       // jComboBox1.setVisible(false);
+        // jComboBox1.setVisible(false);
     }
 
     /**
@@ -73,7 +75,7 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/agenda_remover_32.png"))); // NOI18N
-        jButtonExcluir.setMnemonic('E');
+        jButtonExcluir.setMnemonic('x');
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -99,7 +101,7 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         });
 
         jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/agenda_editar_32.png"))); // NOI18N
-        jButtonEditar.setMnemonic('D');
+        jButtonEditar.setMnemonic('e');
         jButtonEditar.setText("Editar");
         jButtonEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -132,7 +134,7 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         jButtonVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/status_32.png"))); // NOI18N
-        jButtonVisualizar.setMnemonic('I');
+        jButtonVisualizar.setMnemonic('v');
         jButtonVisualizar.setText("Visualizar");
         jButtonVisualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonVisualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -206,11 +208,17 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(2).setCellRenderer(consultaColunaHoraRenderer1);
         }
 
+        jButtonFiltrar.setMnemonic('f');
         jButtonFiltrar.setText("Filtrar");
         jButtonFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,10 +297,10 @@ public class TelaListaConsultas extends javax.swing.JFrame {
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
         if ((jDateChooserData.getDate() != null)) {
             this.data = jDateChooserData.getDate();
-            consultaQuery =  entityManager.createNamedQuery("Consulta.findByDataConsulta").setParameter("dataConsulta", this.data);
+            consultaQuery = entityManager.createNamedQuery("Consulta.findByDataConsulta").setParameter("dataConsulta", this.data);
             consultaList.clear();
             consultaList.addAll(consultaQuery.getResultList());
-        }else{
+        } else {
             consultaQuery = entityManager.createNamedQuery("Consulta.findAll");
             consultaList.clear();
             consultaList.addAll(consultaQuery.getResultList());
@@ -302,23 +310,22 @@ public class TelaListaConsultas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-      int excluir = JOptionPane.showConfirmDialog(rootPane, "Você tem certeza que deseja excluir essa consulta?");
+        int excluir = JOptionPane.showConfirmDialog(rootPane, "Você tem certeza que deseja excluir essa consulta?");
         if (excluir == 0) {
             if (this.jComboBox1.getSelectedIndex() != -1) {
                 boolean excluiu = false;
                 Consulta c = (Consulta) jComboBox1.getSelectedItem();
                 ConsultaDAO cDAO = new ConsultaDAO();
                 try {
-                   excluiu =  cDAO.excluir(c);
+                    excluiu = cDAO.excluir(c);
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaCadastroConsulta.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 consultaList.remove(c);
             }
-        }  
-        
-        
-        
+        }
+
+
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
@@ -332,6 +339,24 @@ public class TelaListaConsultas extends javax.swing.JFrame {
             new TelaConsultasPaciente(c.getIdpaciente(), c).setVisible(true);
         }
     }//GEN-LAST:event_jButtonVisualizarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() > 1) {
+            if (jComboBox1.getSelectedIndex() != -1) {
+                PacienteDAO pdao = new PacienteDAO();
+                Paciente p = new Paciente();
+                Consulta c = (Consulta) jComboBox1.getSelectedItem();
+                try {
+                    pdao.alterar(c.getIdpaciente(), false);
+                    p = pdao.pesquisarPorId(c.getIdpaciente().getIdpaciente());
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                new TelaConsultasPaciente(c.getIdpaciente(), c).setVisible(true);
+            }
+        }
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
