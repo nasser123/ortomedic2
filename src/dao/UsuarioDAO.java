@@ -22,11 +22,14 @@ package dao;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import model.TipoUsuario;
 import model.Usuario;
+import telas.TelaPrincipal;
 import utilidades.ConnectionFactory;
 import utilidades.Senhas;
 
@@ -137,13 +140,19 @@ public class UsuarioDAO implements IDao {
 
     public Usuario pesquisarPorUsuario(String usuario) throws SQLException {
         Usuario u = null;
-        List usuarios = entity.createNamedQuery("Usuario.findByUsuario").setParameter("usuario", usuario).getResultList();
-        if (!usuarios.isEmpty()) {
-            u = (Usuario) usuarios.get(0);
-            return u;
+        try {
+            List usuarios = entity.createNamedQuery("Usuario.findByUsuario").setParameter("usuario", usuario).getResultList();
+            if (!usuarios.isEmpty()) {
+                u = (Usuario) usuarios.get(0);
+                return u;
+            }
+            JOptionPane.showMessageDialog(null, "Usuário digitado não existe.");
+            return null;
+        } catch (NullPointerException npe) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, npe);
         }
-        JOptionPane.showMessageDialog(null, "Usuário digitado não existe.");
         return null;
+
     }
 
     @Override
