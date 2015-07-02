@@ -22,9 +22,9 @@ package telas;
 import dao.UsuarioDAO;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Level;
 import utilidades.ConfigTelas;
 
 /**
@@ -34,6 +34,7 @@ import utilidades.ConfigTelas;
 public class TelaLogin extends javax.swing.JFrame {
 
     private boolean login;
+    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TelaLogin.class.getName());
 
     /**
      * Creates new form TelaInicial
@@ -156,7 +157,7 @@ public class TelaLogin extends javax.swing.JFrame {
             try {
                 realizarLogin();
             } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.FATAL, null, ex);
             }
         }
 
@@ -192,6 +193,7 @@ public class TelaLogin extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
+                //if ("teste".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -255,7 +257,7 @@ public class TelaLogin extends javax.swing.JFrame {
             try {
                 this.login = uc.verificaLogin(usuario, senhaTemp);
             } catch (SQLException | NullPointerException ex) {
-                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.FATAL, null, ex);
                 return false;
             }
             if (login) {

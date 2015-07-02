@@ -22,13 +22,13 @@ package dao;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import model.TipoUsuario;
 import model.Usuario;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import telas.TelaPrincipal;
 import utilidades.ConnectionFactory;
 import utilidades.Senhas;
@@ -44,6 +44,7 @@ public class UsuarioDAO implements IDao {
      */
 
     private EntityManager entity;
+    private Logger logger = Logger.getLogger(UsuarioDAO.class.getName());
 
     public UsuarioDAO() {
         this.entity = ConnectionFactory.getEntityManager();
@@ -149,7 +150,8 @@ public class UsuarioDAO implements IDao {
             JOptionPane.showMessageDialog(null, "Usuário digitado não existe.");
             return null;
         } catch (NullPointerException npe) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, npe);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.ERROR, null, npe);
+            logger.error("Erro na pesquisa de usuario!",npe);
         }
         return null;
 

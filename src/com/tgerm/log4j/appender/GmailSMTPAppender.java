@@ -1,4 +1,4 @@
-package ortomedic;
+package com.tgerm.log4j.appender;
 
 import java.util.Date;
 import java.util.Properties;
