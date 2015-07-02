@@ -1,11 +1,14 @@
 package relatorios;
 
 import java.io.InputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import model.Consulta;
 import net.sf.jasperreports.engine.JRException;
 import utilidades.ConnectionFactory;
+import utilidades.Datas;
 import utilidades.ReportUtils;
 
 /**
@@ -70,14 +73,16 @@ public class ExecutaRelatorio {
 //        }
 //    }
     
-    public void abrirRelatorioReceita(Consulta consulta, String titulo, String texto){
+    public void abrirRelatorioReceita(Consulta consulta, String titulo, String texto, Date data){
     //InputStream inputStream = getClass().getResourceAsStream("RelatorioParcelasConvenio.jasper");
+        
         InputStream inputStream = getClass().getResourceAsStream("RelatorioReceita.jasper");
         Map<String, Object> parametros = new HashMap<String, Object>();
         parametros.put("CONSULTA", consulta.getIdconsulta());
         parametros.put("IDADE", consulta.getIdpaciente().getIdade());
         parametros.put("TITULO", titulo);
         parametros.put("TEXTO", texto);
+        parametros.put("DATA", Datas.getDate(data));
         try {
             // abre o relatório
             ReportUtils.openReport(titulo, inputStream, parametros, ConnectionFactory.getConnection());

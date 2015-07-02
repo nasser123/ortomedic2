@@ -43,6 +43,28 @@ public class Datas {
     }
 
     /**
+     * Método para converter uma data do tipo Date para uma String. O formato de
+     * saída da String será "dd/MM/yyyy"
+     *
+     * @param data a data no tipo Date
+     * @return {@link String} no formato "dd/MM/yyyy"
+     */
+    public static boolean ehDate(Date data) {
+        try {
+            //DateFormat date = new SimpleDateFormat(DATE);
+            Date novaData = data;
+            if (novaData != null) {
+                return true;
+            }
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
      * Método para retornar a hora no formato HH:MM:SS
      *
      * @param hora
@@ -276,13 +298,13 @@ public class Datas {
         return age;
     }
 
-    public static String getDataString(Date data){
+    public static String getDataString(Date data) {
         String retorno = "";
-        retorno = getDia(data) + "-" +
-                getMes(data)  + "-" +
-                getAno(data);
+        retorno = getDia(data) + "-"
+                + getMes(data) + "-"
+                + getAno(data);
         return retorno;
-    
+
     }
-    
+
 }

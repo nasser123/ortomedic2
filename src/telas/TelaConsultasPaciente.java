@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package telas;
 
 import dao.PacienteDAO;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.Consulta;
 import model.Paciente;
 import relatorios.ExecutaRelatorio;
 import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
+import utilidades.Datas;
 
 /**
  *
@@ -28,6 +26,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
      */
     Paciente pac;
     PacienteDAO pDAO;
+
     public TelaConsultasPaciente(Paciente paciente, Consulta consulta) {
         this.pac = paciente;
         initComponents();
@@ -38,16 +37,16 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         ct.carregarConfig(this);
         this.setResizable(true);
     }
-    
-    private void selecionaConsulta(Consulta consulta){
+
+    private void selecionaConsulta(Consulta consulta) {
         int index = 0;
-        for (int i = 0 ; i < this.paciente1.getConsultaList().size(); i ++){
-            if(this.paciente1.getConsultaList().get(i).equals(consulta)){
+        for (int i = 0; i < this.paciente1.getConsultaList().size(); i++) {
+            if (this.paciente1.getConsultaList().get(i).equals(consulta)) {
                 index = i;
                 jTable1.setRowSelectionInterval(index, index);
             }
         }
-        
+
     }
 
     /**
@@ -543,8 +542,11 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
             this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getExames() != null) {
+                Date data = Datas.getCurrentTime();
+                new TelaSelecionaData(this, true).setVisible(true);
+                data = TelaSelecionaData.getData();
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Exames", c.getExames());
+                er.abrirRelatorioReceita(c, "Exames", c.getExames(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo exame está vazio");
@@ -560,8 +562,12 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
             this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getReceita() != null) {
+                Date data = Datas.getCurrentTime();
+                new TelaSelecionaData(this, true).setVisible(true);
+                data = TelaSelecionaData.getData();
+                
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Receita", c.getReceita());
+                er.abrirRelatorioReceita(c, "Receita", c.getReceita(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo receita está vazio");
@@ -576,8 +582,12 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
             this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getAtestado() != null) {
+                Date data = Datas.getCurrentTime();
+                new TelaSelecionaData(this, true).setVisible(true);
+                data = TelaSelecionaData.getData();
+                
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Atestado", c.getAtestado());
+                er.abrirRelatorioReceita(c, "Atestado", c.getAtestado(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo atestado está vazio");
@@ -592,8 +602,12 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
             this.atualizaPaciente(false);
             Consulta c = (Consulta) jComboBoxConsultas.getSelectedItem();
             if (c.getLaudo() != null) {
+                Date data = Datas.getCurrentTime();
+                new TelaSelecionaData(this, true).setVisible(true);
+                data = TelaSelecionaData.getData();
+                
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Laudo", c.getLaudo());
+                er.abrirRelatorioReceita(c, "Laudo", c.getLaudo(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo laudo está vazio");
@@ -607,22 +621,17 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         atualizaPaciente(true);
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    private void atualizaPaciente(boolean mensagem){
-    pDAO = new PacienteDAO();
-        try {
-            pDAO.alterar(this.paciente1, mensagem);
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaConsultasPaciente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-    
+    private void atualizaPaciente(boolean mensagem) {
+        pDAO = new PacienteDAO();
+        pDAO.atualizaConsultaPaciente(this.paciente1);
+
     }
     private void jButtonDetalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalharActionPerformed
         new TelaCadastroPacienteJDialog(this, true, paciente1, false, true).setVisible(true);
     }//GEN-LAST:event_jButtonDetalharActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed

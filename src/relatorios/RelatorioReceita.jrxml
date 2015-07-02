@@ -2,11 +2,12 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="97aac7d6-a793-42a2-86d6-ef8d00b3ad38">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="22"/>
 	<parameter name="CONSULTA" class="java.lang.Integer"/>
 	<parameter name="IDADE" class="java.lang.Integer"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="TEXTO" class="java.lang.String"/>
+	<parameter name="DATA" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      paciente.`idpaciente` AS paciente_idpaciente,
@@ -58,10 +59,6 @@ WHERE
 				<reportElement x="49" y="121" width="51" height="15" uuid="ca48c212-66a6-4105-9ace-debeaf25db0a"/>
 				<text><![CDATA[Paciente:]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="273" y="481" width="95" height="20" uuid="edd8aa97-5b0d-4fe0-8b2d-8bad11581dad"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="49" y="137" width="52" height="15" uuid="f79c982d-1092-4287-b820-084eaabe6c1c"/>
 				<text><![CDATA[Endereço:]]></text>
@@ -88,14 +85,14 @@ WHERE
 				<textFieldExpression><![CDATA[$P{IDADE}.intValue() == 0 ? "" : $P{IDADE}.toString()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="49" y="170" width="100" height="15" uuid="0696ed1a-40c5-4852-a48e-4a66a326bd20"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="true"/>
+				<reportElement x="49" y="170" width="319" height="26" uuid="0696ed1a-40c5-4852-a48e-4a66a326bd20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="49" y="186" width="319" height="290" uuid="f083b6a4-04b5-486e-be34-9fce181c4f68"/>
+				<reportElement x="49" y="196" width="319" height="280" uuid="f083b6a4-04b5-486e-be34-9fce181c4f68"/>
 				<textElement textAlignment="Justified">
 					<font size="10" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -103,8 +100,12 @@ WHERE
 				<textFieldExpression><![CDATA[$P{TEXTO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="137" y="152" width="100" height="15" uuid="9e80f260-784a-40a0-aee6-ea173b5ce499"/>
+				<reportElement x="137" y="153" width="100" height="15" uuid="9e80f260-784a-40a0-aee6-ea173b5ce499"/>
 				<textFieldExpression><![CDATA[$P{IDADE}.intValue() == 0 ? "" : "anos"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="273" y="481" width="100" height="20" uuid="20b13ca1-9868-4cb7-93f9-595162bcc840"/>
+				<textFieldExpression><![CDATA[$P{DATA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

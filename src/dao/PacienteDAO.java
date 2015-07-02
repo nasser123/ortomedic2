@@ -94,7 +94,6 @@ public class PacienteDAO implements IDao {
     public boolean alterar(Object paciente, boolean mensagem) throws SQLException {
         if (paciente instanceof Paciente) {
             Paciente p = (Paciente) paciente;
-
             if (ehValido(p)) {
                 atualizaConsultas(p);
                 if (!entity.getTransaction().isActive()) {
@@ -109,8 +108,18 @@ public class PacienteDAO implements IDao {
             }
             atualizaPaciente(p);
         }
-
         return false;
+    }
+
+    public void atualizaConsultaPaciente(Paciente paciente) {
+        Paciente p = paciente;
+
+        if (!entity.getTransaction().isActive()) {
+            entity.getTransaction().begin();
+        }
+        entity.merge(p);
+        entity.getTransaction().commit();
+
     }
 
     @Override

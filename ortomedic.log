@@ -1,0 +1,14 @@
+(UsuarioDAO.java:153) ERROR Thread-3 telas.TelaPrincipal - 
+java.lang.NullPointerException
+	at dao.UsuarioDAO.pesquisarPorUsuario(UsuarioDAO.java:145)
+	at dao.UsuarioDAO.verificaLogin(UsuarioDAO.java:199)
+	at telas.TelaLogin.realizarLogin(TelaLogin.java:258)
+	at telas.TelaLogin.access$400(TelaLogin.java:34)
+	at telas.TelaLogin$ThreadAtualizaJProgressBar.run(TelaLogin.java:158)
+(UsuarioDAO.java:154) ERROR Thread-3 dao.UsuarioDAO - Erro na pesquisa de usuario!
+java.lang.NullPointerException
+	at dao.UsuarioDAO.pesquisarPorUsuario(UsuarioDAO.java:145)
+	at dao.UsuarioDAO.verificaLogin(UsuarioDAO.java:199)
+	at telas.TelaLogin.realizarLogin(TelaLogin.java:258)
+	at telas.TelaLogin.access$400(TelaLogin.java:34)
+	at telas.TelaLogin$ThreadAtualizaJProgressBar.run(TelaLogin.java:158)
