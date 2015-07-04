@@ -434,7 +434,7 @@ public class TelaCadastroPacienteJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonSair1ActionPerformed
 
     private void jButtonPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisar1ActionPerformed
-        new TelaListaPacientes().setVisible(true);
+        new TelaListaPacientes(false).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
 

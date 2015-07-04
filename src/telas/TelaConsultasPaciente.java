@@ -75,10 +75,6 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaSintomas = new javax.swing.JTextArea();
-        jLayeredPane4 = new javax.swing.JLayeredPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextAreaExames = new javax.swing.JTextArea();
-        jButtonRelatorioExame = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextAreaReceita = new javax.swing.JTextArea();
@@ -92,6 +88,10 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jTextAreaLaudo = new javax.swing.JTextArea();
         jButtonRelatorioAtestado = new javax.swing.JButton();
         jButtonRelatorioLaudo = new javax.swing.JButton();
+        jLayeredPane4 = new javax.swing.JLayeredPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextAreaExames = new javax.swing.JTextArea();
+        jButtonRelatorioExame = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jTextFieldPaciente = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -264,57 +264,6 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Sintomas", new javax.swing.ImageIcon(getClass().getResource("/icones32/status_32.png")), jLayeredPane3); // NOI18N
 
-        jTextAreaExames.setColumns(20);
-        jTextAreaExames.setLineWrap(true);
-        jTextAreaExames.setRows(5);
-        jTextAreaExames.setWrapStyleWord(true);
-        jTextAreaExames.setBorder(javax.swing.BorderFactory.createTitledBorder("Exames"));
-        jTextAreaExames.setMaximumSize(new java.awt.Dimension(116, 43));
-        jTextAreaExames.setMinimumSize(new java.awt.Dimension(116, 43));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.exames}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
-        bindingGroup.addBinding(binding);
-
-        jScrollPane4.setViewportView(jTextAreaExames);
-
-        jButtonRelatorioExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/impressora_32.png"))); // NOI18N
-        jButtonRelatorioExame.setMnemonic('I');
-        jButtonRelatorioExame.setText("Imprimir");
-        jButtonRelatorioExame.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonRelatorioExame.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonRelatorioExame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRelatorioExameActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jLayeredPane4Layout = new javax.swing.GroupLayout(jLayeredPane4);
-        jLayeredPane4.setLayout(jLayeredPane4Layout);
-        jLayeredPane4Layout.setHorizontalGroup(
-            jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonRelatorioExame, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jLayeredPane4Layout.setVerticalGroup(
-            jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jLayeredPane4Layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jButtonRelatorioExame, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jLayeredPane4.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane4.setLayer(jButtonRelatorioExame, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jTabbedPane1.addTab("Exames", new javax.swing.ImageIcon(getClass().getResource("/icones32/exame2.png")), jLayeredPane4); // NOI18N
-
         jTextAreaReceita.setColumns(20);
         jTextAreaReceita.setLineWrap(true);
         jTextAreaReceita.setRows(5);
@@ -468,6 +417,57 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jLayeredPane2.setLayer(jButtonRelatorioLaudo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTabbedPane1.addTab("Atestado/Laudo", new javax.swing.ImageIcon(getClass().getResource("/icones32/exame.png")), jLayeredPane2); // NOI18N
+
+        jTextAreaExames.setColumns(20);
+        jTextAreaExames.setLineWrap(true);
+        jTextAreaExames.setRows(5);
+        jTextAreaExames.setWrapStyleWord(true);
+        jTextAreaExames.setBorder(javax.swing.BorderFactory.createTitledBorder("Exames"));
+        jTextAreaExames.setMaximumSize(new java.awt.Dimension(116, 43));
+        jTextAreaExames.setMinimumSize(new java.awt.Dimension(116, 43));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.exames}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jScrollPane4.setViewportView(jTextAreaExames);
+
+        jButtonRelatorioExame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/impressora_32.png"))); // NOI18N
+        jButtonRelatorioExame.setMnemonic('I');
+        jButtonRelatorioExame.setText("Imprimir");
+        jButtonRelatorioExame.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonRelatorioExame.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonRelatorioExame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRelatorioExameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jLayeredPane4Layout = new javax.swing.GroupLayout(jLayeredPane4);
+        jLayeredPane4.setLayout(jLayeredPane4Layout);
+        jLayeredPane4Layout.setHorizontalGroup(
+            jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonRelatorioExame, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jLayeredPane4Layout.setVerticalGroup(
+            jLayeredPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jLayeredPane4Layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jButtonRelatorioExame, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jLayeredPane4.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane4.setLayer(jButtonRelatorioExame, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTabbedPane1.addTab("Exames", new javax.swing.ImageIcon(getClass().getResource("/icones32/exame2.png")), jLayeredPane4); // NOI18N
 
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 108, -1, 453));
 

@@ -415,7 +415,7 @@ public class TelaCadastroConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        new TelaListaPacientes("cadastro_consulta").setVisible(true);
+        new TelaListaPacientes("cadastro_consulta", false).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 

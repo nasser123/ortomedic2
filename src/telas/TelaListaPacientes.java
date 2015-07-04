@@ -26,14 +26,15 @@ public class TelaListaPacientes extends javax.swing.JFrame {
      */
     String tela;
 
-    public TelaListaPacientes() {
+    public TelaListaPacientes(boolean liberaVisualizar) {
         initComponents();
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
         jComboBoxPacientes.setVisible(false);
+        jButtonVisualizar.setVisible(liberaVisualizar);
     }
 
-    public TelaListaPacientes(String tela) {
+    public TelaListaPacientes(String tela, boolean liberaVisualizar) {
         initComponents();
         this.tela = tela;
         ConfigTelas ct = new ConfigTelas(this);
@@ -42,6 +43,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         if (tela == "cadastro_consulta") {
             jButtonEditar.setEnabled(false);
         }
+        jButtonVisualizar.setVisible(liberaVisualizar);
     }
 
     /**
@@ -459,7 +461,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaListaPacientes().setVisible(true);
+                new TelaListaPacientes(true).setVisible(true);
             }
         });
     }

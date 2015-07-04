@@ -8,7 +8,6 @@ package telas;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import utilidades.Datas;
-import utilidades.ValidaValores;
 
 /**
  *
@@ -30,6 +29,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
         initComponents();
         this.data = Datas.getCurrentTime();
         jDateChooser1.setDate(this.data);
+        jButton1.requestFocus();
         
     }
 

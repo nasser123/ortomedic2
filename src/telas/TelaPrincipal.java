@@ -526,7 +526,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConveniosActionPerformed
 
     private void jButtonPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPacientesActionPerformed
-        new TelaListaPacientes().setVisible(true);
+        new TelaListaPacientes(true).setVisible(true);
     }//GEN-LAST:event_jButtonPacientesActionPerformed
 
     private void jButtonNovaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaConsultaActionPerformed
@@ -655,7 +655,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemBackupActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        new TelaListaPacientes().setVisible(true);
+//        new TelaListaPacientes(true).setVisible(true);
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItemListaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaConsultaActionPerformed
@@ -667,7 +667,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemNovaConsultaActionPerformed
 
     private void jMenuItemPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPacientesActionPerformed
-        new TelaListaPacientes().setVisible(true);
+        new TelaListaPacientes(true).setVisible(true);
     }//GEN-LAST:event_jMenuItemPacientesActionPerformed
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
