@@ -253,7 +253,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setAutoCreateRowSorter(true);
-        jTable1.setColumnSelectionAllowed(true);
         jTable1.setMaximumSize(new java.awt.Dimension(330, 0));
         jTable1.setMinimumSize(new java.awt.Dimension(330, 0));
         jTable1.setRequestFocusEnabled(false);
@@ -275,7 +274,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         columnBinding.setColumnName("Compareceu");
         columnBinding.setColumnClass(Boolean.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idtipoConsulta.descricao}"));
-        columnBinding.setColumnName("Tipo Consulta");
+        columnBinding.setColumnName("TipoConsulta");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);

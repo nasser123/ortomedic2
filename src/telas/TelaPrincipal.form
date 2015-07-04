@@ -588,7 +588,6 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
-                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[330, 0]"/>
                     </Property>
@@ -622,7 +621,7 @@
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Boolean.class"/>
                       </Subbinding>
                       <Subbinding sourcePath="${idtipoConsulta.descricao}">
-                        <BindingParameter name="NAME" value="Tipo Consulta"/>
+                        <BindingParameter name="NAME" value="TipoConsulta"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>

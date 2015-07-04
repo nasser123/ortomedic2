@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.beans.PropertyChangeListener;
@@ -44,6 +43,7 @@ import utilidades.Datas;
     @NamedQuery(name = "Consulta.findByDisponibilidade", query = "SELECT c FROM Consulta c WHERE c.dataConsulta = :dataConsulta and c.horaConsulta = :horaConsulta"),
     @NamedQuery(name = "Consulta.findByCompareceu", query = "SELECT c FROM Consulta c WHERE c.compareceu = :compareceu")})
 public class Consulta implements Serializable {
+
     @Lob
     @Column(name = "atestado")
     private String atestado;
@@ -84,15 +84,11 @@ public class Consulta implements Serializable {
     @JoinColumn(name = "idtipo_consulta", referencedColumnName = "idtipo_consulta")
     @ManyToOne(optional = false)
     private TipoConsulta idtipoConsulta;
-    
-
-    
-    
 
     public String getsDataConsulta() {
         return Datas.getDate(this.dataConsulta);
     }
-    
+
     public String getsHoraConsulta() {
         return Datas.getTimeDataBase(this.horaConsulta);
     }
@@ -155,12 +151,21 @@ public class Consulta implements Serializable {
     }
 
     public Boolean getCompareceu() {
-        return compareceu;
+        if (compareceu != null) {
+            return compareceu;
+        } else {
+            compareceu = false;
+        }
+        return compareceu;  
     }
 
     public void setCompareceu(Boolean compareceu) {
         Boolean oldCompareceu = this.compareceu;
-        this.compareceu = compareceu;
+        if (compareceu != null) {
+            this.compareceu = compareceu;
+        } else {
+            this.compareceu = false;
+        }
         changeSupport.firePropertyChange("compareceu", oldCompareceu, compareceu);
     }
 
@@ -256,13 +261,14 @@ public class Consulta implements Serializable {
         this.laudo = laudo;
         changeSupport.firePropertyChange("laudo", oldLaudo, laudo);
     }
-    
-    public boolean podeExcluir(){
-        if((this.exames != null) || (this.sintomas != null) || this.laudo != null || this.medicacao != null || this.receita != null ||
-                (this.exames != "") || (this.sintomas != "") || this.laudo != "" || this.medicacao != "" || this.receita != "")
+
+    public boolean podeExcluir() {
+        if ((this.exames != null) || (this.sintomas != null) || this.laudo != null || this.medicacao != null || this.receita != null
+                || (this.exames != "") || (this.sintomas != "") || this.laudo != "" || this.medicacao != "" || this.receita != "") {
             return false;
-        else
+        } else {
             return true;
+        }
     }
-    
+
 }

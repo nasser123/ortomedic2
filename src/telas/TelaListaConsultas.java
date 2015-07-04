@@ -203,7 +203,7 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         columnBinding.setColumnClass(Boolean.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idtipoConsulta.descricao}"));
-        columnBinding.setColumnName("Tipo de Consulta");
+        columnBinding.setColumnName("TipoConsulta");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
@@ -215,7 +215,10 @@ public class TelaListaConsultas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(200);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(2).setCellRenderer(consultaColunaHoraRenderer1);
+            jTable1.getColumnModel().getColumn(4).setCellRenderer(null);
         }
 
         jButtonFiltrar.setMnemonic('f');
