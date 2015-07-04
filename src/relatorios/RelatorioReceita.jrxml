@@ -2,12 +2,13 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="97aac7d6-a793-42a2-86d6-ef8d00b3ad38">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="22"/>
+	<property name="ireport.y" value="166"/>
 	<parameter name="CONSULTA" class="java.lang.Integer"/>
 	<parameter name="IDADE" class="java.lang.Integer"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="TEXTO" class="java.lang.String"/>
 	<parameter name="DATA" class="java.lang.String"/>
+	<parameter name="CIDADE" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      paciente.`idpaciente` AS paciente_idpaciente,
@@ -71,11 +72,6 @@ WHERE
 				<textFieldExpression><![CDATA[$F{paciente_endereco}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="192" y="481" width="81" height="20" uuid="1f1f3673-4dff-41e9-ad28-b832f19b4ab2"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[Uruguaiana-RS, ]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="49" y="153" width="51" height="15" uuid="13733fd1-ab05-495e-89c6-88b57fa15fe0"/>
 				<text><![CDATA[Idade:]]></text>
 			</staticText>
@@ -107,6 +103,15 @@ WHERE
 				<reportElement x="273" y="481" width="100" height="20" uuid="20b13ca1-9868-4cb7-93f9-595162bcc840"/>
 				<textFieldExpression><![CDATA[$P{DATA}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="90" y="481" width="178" height="20" uuid="853865f9-5b12-46d3-ab41-dd24fe6768f9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{CIDADE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="268" y="481" width="5" height="20" uuid="ebefa333-e56a-46d0-ac03-2397e463f733"/>
+				<text><![CDATA[,]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>
