@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Consulta;
 import net.sf.jasperreports.engine.JRException;
+import utilidades.ConfigurationFactory;
 import utilidades.ConnectionFactory;
 import utilidades.Datas;
 import utilidades.ReportUtils;
@@ -83,6 +84,7 @@ public class ExecutaRelatorio {
         parametros.put("TITULO", titulo);
         parametros.put("TEXTO", texto);
         parametros.put("DATA", Datas.getDate(data));
+        parametros.put("CIDADE", ConfigurationFactory.CIDADE);
         try {
             // abre o relatório
             ReportUtils.openReport(titulo, inputStream, parametros, ConnectionFactory.getConnection());

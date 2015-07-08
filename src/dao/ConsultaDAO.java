@@ -123,7 +123,6 @@ public class ConsultaDAO implements IDao {
                 entity.getTransaction().begin();
             }
             entity.merge(c);
-            entity.refresh(c);
             entity.getTransaction().commit();
             if (mensagem) {
                 JOptionPane.showMessageDialog(null, "Consulta alterada com sucesso.");
@@ -156,6 +155,14 @@ public class ConsultaDAO implements IDao {
             return false;
         }
         return true;
+    }
+
+    private void atualizaConsulta(Consulta consulta) {
+        if (!entity.getTransaction().isActive()) {
+            entity.getTransaction().begin();
+        }
+        entity.refresh(consulta);
+        entity.getTransaction().commit();
     }
 
 }

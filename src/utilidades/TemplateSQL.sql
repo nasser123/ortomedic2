@@ -171,4 +171,7 @@ MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-
+INSERT INTO `convenio` VALUES (1,'UNIMED',''),(2,'IPE','');
+INSERT INTO `tipo_consulta` VALUES (1,'consulta'),(2,'reconsulta');
+INSERT INTO `tipo_usuario` VALUES (1,'secretaria'),(2,'medico');
+INSERT INTO `usuario` VALUES (1,'usuario','','','e10adc3949ba59abbe56e057f20f883e','usuario',2);
