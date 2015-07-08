@@ -104,9 +104,10 @@ public class PacienteDAO implements IDao {
                 if (mensagem) {
                     JOptionPane.showMessageDialog(null, "Paciente alterado com sucesso.");
                 }
+                atualizaPaciente(p);
                 return true;
             }
-            atualizaPaciente(p);
+
         }
         return false;
     }
@@ -136,6 +137,17 @@ public class PacienteDAO implements IDao {
             return pacientes;
         }
         return null;
+    }
+
+    public List<Paciente> pesquisarPorNome(String nome) {
+        Query query = entity.createNativeQuery("Select * from paciente where nome like '%" + nome + "%'", Paciente.class);
+        List pacientes = query.getResultList();
+        if (!pacientes.isEmpty()) {
+            atualizaListaPacientes(pacientes);
+            return pacientes;
+        }
+        return null;
+
     }
 
     private boolean ehValido(Paciente paciente) {
@@ -201,6 +213,17 @@ public class PacienteDAO implements IDao {
 
     }
 
+    private void atualizaListaPacientes(List<Paciente> pacientes) {
+        if (!entity.getTransaction().isActive()) {
+            entity.getTransaction().begin();
+        }
+        for (int i = 0; i < pacientes.size(); i++) {
+            entity.refresh(pacientes.get(i));
+        }
+
+        entity.getTransaction().commit();
+    }
+
     private void atualizaPaciente(Paciente paciente) {
         if (!entity.getTransaction().isActive()) {
             entity.getTransaction().begin();
@@ -208,4 +231,5 @@ public class PacienteDAO implements IDao {
         entity.refresh(paciente);
         entity.getTransaction().commit();
     }
+
 }

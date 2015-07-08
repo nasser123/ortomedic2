@@ -340,6 +340,7 @@ public class TelaListaPacientes extends javax.swing.JFrame {
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         Paciente p = (Paciente) jComboBoxPacientes.getSelectedItem();
         new TelaCadastroPacienteJDialog(this, true, p, false, true).setVisible(true);
+        jButtonFiltrarActionPerformed(evt);
         //this.dispose();
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
@@ -360,10 +361,12 @@ public class TelaListaPacientes extends javax.swing.JFrame {
 
     private void jButtonFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrarActionPerformed
         String filtro = jTextFieldFiltro.getText();
-        pacienteQuery = entityManager.createNativeQuery("Select * from paciente where nome like '%" + filtro + "%'", Paciente.class);
-        pacienteList.clear();
-        List<Paciente> teste = pacienteQuery.getResultList();
-        pacienteList.addAll(pacienteQuery.getResultList());
+        PacienteDAO pDAO = new PacienteDAO();
+        if (!filtro.equals("")) {
+            pacienteList.clear();
+            List<Paciente> listaPacientes = pDAO.pesquisarPorNome(filtro);
+            pacienteList.addAll(listaPacientes);
+        }
     }//GEN-LAST:event_jButtonFiltrarActionPerformed
 
     private void jTextFieldFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFiltroActionPerformed
