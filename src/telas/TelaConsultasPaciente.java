@@ -549,7 +549,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 new TelaSelecionaData(this, true).setVisible(true);
                 data = TelaSelecionaData.getData();
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Exames", c.getExames(), data);
+                er.abrirRelatorioReceituario(c, "Exames", c.getExames(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo exame está vazio");
@@ -570,7 +570,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 data = TelaSelecionaData.getData();
                 
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Receita", c.getReceita(), data);
+                er.abrirRelatorioReceituario(c, "Receita", c.getReceita(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo receita está vazio");
@@ -590,7 +590,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 data = TelaSelecionaData.getData();
                 
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Atestado", c.getAtestado(), data);
+                er.abrirRelatorioReceituario(c, "Atestado", c.getAtestado(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo atestado está vazio");
@@ -610,7 +610,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 data = TelaSelecionaData.getData();
                 
                 ExecutaRelatorio er = new ExecutaRelatorio();
-                er.abrirRelatorioReceita(c, "Laudo", c.getLaudo(), data);
+                er.abrirRelatorioReceituario(c, "Laudo", c.getLaudo(), data);
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Campo laudo está vazio");

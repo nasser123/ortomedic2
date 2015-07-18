@@ -5,13 +5,10 @@
  */
 package telas;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilidades.ConfigurationFactory;
-import javax.swing.JFileChooser;
 import utilidades.ConfigTelas;
 
 /**
@@ -42,6 +39,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jTextFieldPort.setText(String.valueOf(cf.DBPORT));
         jTextFieldUser.setText(cf.DBUSER);
         jPasswordFieldPassword.setText(cf.DBPASSWORD);
+        jTextFieldCidade.setText(cf.CIDADE);
     }
 
     /**
@@ -71,6 +69,8 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldPort = new javax.swing.JTextField();
         jButtonBanco = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTextFieldCidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -154,6 +154,10 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 110, 80));
 
+        jLabel8.setText("Cidade");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        jPanel1.add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 277, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,6 +183,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         cf.DBPORT = jTextFieldPort.getText();
         cf.DATABASE = jTextFieldDataBase.getText();
         cf.DBUSER = jTextFieldUser.getText();
+        cf.CIDADE = jTextFieldCidade.getText();
 
         char[] senhaTemp = jPasswordFieldPassword.getPassword();
         String senha = "";
@@ -258,8 +263,10 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldPassword;
+    private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldDataBase;
     private javax.swing.JTextField jTextFieldHost;
     private javax.swing.JTextField jTextFieldName;

@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane;
 import model.Consulta;
 import net.sf.jasperreports.engine.JRException;
 import utilidades.ConfigurationFactory;
@@ -74,7 +73,7 @@ public class ExecutaRelatorio {
 //        }
 //    }
     
-    public void abrirRelatorioReceita(Consulta consulta, String titulo, String texto, Date data){
+    public void abrirRelatorioReceituario(Consulta consulta, String titulo, String texto, Date data){
     //InputStream inputStream = getClass().getResourceAsStream("RelatorioParcelasConvenio.jasper");
         
         InputStream inputStream = getClass().getResourceAsStream("RelatorioReceita.jasper");
@@ -95,15 +94,15 @@ public class ExecutaRelatorio {
     
     
 
-    public void abrirRelatorio(String relatorio, String titulo) {
-        InputStream inputStream = getClass().getResourceAsStream("testeRelatorio2.jasper");
-        Map<String, Object> parametros = new HashMap<String, Object>();
-        try {
-            // abre o relatório
-            ReportUtils.openReport(titulo, inputStream, parametros, ConnectionFactory.getConnection());
-        } catch (JRException exc) {
-            exc.printStackTrace();
-        }
-    }
+//    public void abrirRelatorio(String relatorio, String titulo) {
+//        InputStream inputStream = getClass().getResourceAsStream("testeRelatorio2.jasper");
+//        Map<String, Object> parametros = new HashMap<String, Object>();
+//        try {
+//            // abre o relatório
+//            ReportUtils.openReport(titulo, inputStream, parametros, ConnectionFactory.getConnection());
+//        } catch (JRException exc) {
+//            exc.printStackTrace();
+//        }
+//    }
     
 }

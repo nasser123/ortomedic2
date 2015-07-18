@@ -71,7 +71,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextFieldUsuario.setText("nasser");
         jTextFieldUsuario.setToolTipText("Nome do usuário");
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 220, -1));
 
@@ -95,7 +94,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setText("senha");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
-        jPasswordField1.setText("123456");
         jPasswordField1.setToolTipText("Digite a senha");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

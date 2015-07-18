@@ -6,10 +6,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -30,13 +31,13 @@ public class ConnectionFactory {
     private static EntityManager entityManager;
     private final String classe = getClass().getCanonicalName();
 
-
-    private String getClasse(){
+    private String getClasse() {
         return getClass().getCanonicalName();
     }
-    
-    public ConnectionFactory(){
+
+    public ConnectionFactory() {
     }
+
     public static Connection getConnection() {
         if (connection == null) {
             Section config = ConfigurationFactory.getConfiguration();
@@ -96,14 +97,15 @@ public class ConnectionFactory {
 
     public static boolean geraBackup() {
         boolean gravou = false;
-        Properties prop = System.getProperties();
-        String sistema = System.getProperty("os.arch");
         if (existeExecutavel("mysqldump.exe")) {
             try {
                 File file = new File("Backup");
                 file.mkdir();
+                Calendar cal = Calendar.getInstance();
+                String time = new SimpleDateFormat("HH-mm").format(cal.getTime());
                 Date data = Datas.getCurrentTime();
-                String nomeBkp = "Backup(" + Datas.getDataString(data) + "-" + System.currentTimeMillis() + ").sql";
+                //String nomeBkp = "Backup(" + time + ").sql";
+                String nomeBkp = "Backup(" + Datas.getDataString(data) + "-" + time + ").sql";
                 String dump = "cmd.exe /c " + ConfigurationFactory.DBFILE.getCanonicalPath()
                         + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + "mysqldump "
                         + " --user=" + ConfigurationFactory.DBUSER
@@ -151,12 +153,14 @@ public class ConnectionFactory {
     private static boolean existeExecutavel(String arquivo) {
         File testeMySqlDump = new File(ConfigurationFactory.DBFILE.getAbsolutePath()
                 + File.separator + ConfigurationFactory.ARCHITECTURE + File.separator + arquivo);
-        if (testeMySqlDump.isFile()) {
-            return true;
-        } else {
-            return false;
-        }
+//        if (testeMySqlDump.isFile()) {
+//            return true;
+//        } else {
+//            return false;
+//        }
 
+        return testeMySqlDump.isFile();
+        
 //        File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
 //        if (ConfigurationFactory.DBFILE.exists()) {
 //            for (int i = 0; i < arquivos.length; i++) {
@@ -175,7 +179,7 @@ public class ConnectionFactory {
     public static boolean restauraBackup(String arquivo, String database, boolean novo) {
         Statement s = null;
         File teste = new File(".");
-        
+
         //se for para cadastrar banco de dados novo ignora o arquivo e seta o arquivo "TemplateSQL.sql"
         if (novo) {
             arquivo = "ortomedic/TemplateSQL.sql";
