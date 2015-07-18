@@ -17,6 +17,7 @@ public interface IDao {
      * 
      * @param objeto
      * @return a entidade com seu identificador
+     * @throws java.sql.SQLException
      */
     public boolean inserir(Object objeto) throws SQLException;
 
