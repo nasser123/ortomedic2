@@ -45,7 +45,7 @@ public class TelaSobre extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ortomedic");
+        jLabel1.setText("DoctorSis");
 
         jLabel2.setText("Versão:");
 

@@ -313,7 +313,7 @@
               <Font name="Tahoma" size="18" style="3"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Ortomedic"/>
+            <Property name="text" type="java.lang.String" value="DoctorSis"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">

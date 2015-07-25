@@ -91,7 +91,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ortomedic");
+        jLabel1.setText("DoctorSis");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

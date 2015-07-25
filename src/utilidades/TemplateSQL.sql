@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS ORTOMEDIC;
+DROP DATABASE IF EXISTS DOCTORSIS;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
 -- Estrutura da tabela `consulta`
 --
-CREATE DATABASE IF NOT EXISTS `ortomedic`;
-USE `ortomedic`;
+CREATE DATABASE IF NOT EXISTS `doctorsis`;
+USE `doctorsis`;
 
 
 CREATE TABLE IF NOT EXISTS `consulta` (

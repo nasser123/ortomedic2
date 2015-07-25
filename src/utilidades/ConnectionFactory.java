@@ -182,7 +182,7 @@ public class ConnectionFactory {
 
         //se for para cadastrar banco de dados novo ignora o arquivo e seta o arquivo "TemplateSQL.sql"
         if (novo) {
-            arquivo = "ortomedic/TemplateSQL.sql";
+            arquivo = "doctorsis/TemplateSQL.sql";
             teste = new File(teste.getAbsolutePath() + arquivo);
             arquivo = teste.getAbsolutePath();
         }
@@ -194,7 +194,7 @@ public class ConnectionFactory {
         }
         try {
             if (novo) {
-                s.execute("DROP DATABASE IF EXISTS ORTOMEDIC");
+                s.execute("DROP DATABASE IF EXISTS DOCTORSIS");
             }
             s.execute("CREATE DATABASE IF NOT EXISTS `" + database + "` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 

@@ -63,7 +63,7 @@ public class ConfigTelas {
     public void carregaIcone(JFrame jp) {
         BufferedImage ico = null;
         try {
-            ico = ImageIO.read(jp.getClass().getResource("/icones32/ortomedic.png"));
+            ico = ImageIO.read(jp.getClass().getResource("/icones32/doctorsis.png"));
             jp.setIconImage(ico);
         } catch (IllegalArgumentException iae) {
             System.out.println("Erro ao carregar icone!");
@@ -75,23 +75,22 @@ public class ConfigTelas {
 
     }
 
+    
+    
     public void carregarConfig(JFrame jp) {
         
         //faz com que a tecla ENTER funcione conforme a tecla TAB
         HashSet conj = new HashSet(jp.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
         jp.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
-        
 
-        jp.setTitle("Ortomedic");
-
+        jp.setTitle("DoctorSis");
         jp.setResizable(false);
-
 
         //Altera o icone padrão do java
         BufferedImage ico = null;
         try {
-            ico = ImageIO.read(jp.getClass().getResource("/icones32/ortomedic.png"));
+            ico = ImageIO.read(jp.getClass().getResource("/icones32/doctorsis.png"));
             jp.setIconImage(ico);
         } catch (IllegalArgumentException iae) {
             System.out.println("Erro ao carregar icone!");
@@ -117,6 +116,18 @@ public class ConfigTelas {
         conj.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
         jd.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
 
-        jd.setTitle("Ortomedic");
+        jd.setTitle("DoctorSis");
+        
+                BufferedImage ico = null;
+        try {
+            ico = ImageIO.read(jd.getClass().getResource("/icones32/doctorsis.png"));
+            jd.setIconImage(ico);
+        } catch (IllegalArgumentException iae) {
+            System.out.println("Erro ao carregar icone!");
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar icone!");
+        }
+
+        
     }   
 }

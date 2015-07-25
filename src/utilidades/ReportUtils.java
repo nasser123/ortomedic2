@@ -79,7 +79,7 @@ public class ReportUtils {
      * @param print JasperPrint do relatório.
      */
     private static void viewReportFrame( String titulo, JasperPrint print ) {
-
+        String tituloTemp = "";
         /*
          * Cria um JRViewer para exibir o relatório.
          * Um JRViewer é uma JPanel.
@@ -87,8 +87,14 @@ public class ReportUtils {
         JRViewer viewer = new JRViewer( print );
 
         // cria o JFrame
-        JFrame frameRelatorio = new JFrame( titulo );
-
+        JFrame frameRelatorio = new JFrame();
+        ConfigTelas ct = new ConfigTelas(frameRelatorio);
+        ct.carregarConfig(frameRelatorio);
+        
+        frameRelatorio.setResizable(true);
+        
+        tituloTemp = frameRelatorio.getTitle() + " - " + titulo.toUpperCase();
+        frameRelatorio.setTitle(tituloTemp);
         // adiciona o JRViewer no JFrame
         frameRelatorio.add( viewer, BorderLayout.CENTER );
 

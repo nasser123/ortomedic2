@@ -104,7 +104,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ortomedic");
+        jLabel3.setText("DoctorSis");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 390, -1));
 
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
@@ -246,7 +246,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 this.dispose();
                 return true;
             } else {
-                JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "Ortomedic - Login Incorreto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "DoctorSis - Login Incorreto", JOptionPane.ERROR_MESSAGE);
                 jProgressBar1.setVisible(false);
             }
         } else {
@@ -263,7 +263,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 tp.setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "Ortomedic - Login Incorreto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "DoctorSis - Login Incorreto", JOptionPane.ERROR_MESSAGE);
                 jProgressBar1.setVisible(false);
             }
             return login;
