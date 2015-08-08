@@ -7,13 +7,16 @@ package telas;
 
 import dao.ConsultaDAO;
 import dao.PacienteDAO;
+import dao.UsuarioDAO;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Consulta;
 import model.Paciente;
+import model.Usuario;
 import utilidades.ConfigTelas;
 import utilidades.ConnectionFactory;
 import utilidades.Datas;
@@ -28,13 +31,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Creates new form TelaPadrao
      */
     Date data;
+    List<Usuario> medicos;
 
     public TelaPrincipal() {
         this.data = Datas.getCurrentTime();
+        this.preencheListaMedicos();
         initComponents();
+
         jDateChooserData.setDate(this.data);
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
+        jDateChooserData.setDate(Datas.getCurrentTime());
 
     }
 
@@ -52,12 +59,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createNamedQuery("Consulta.findByDataConsulta").setParameter("dataConsulta", this.data);
         consultaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(consultaQuery.getResultList());
         consultaColunaHoraRenderer1 = new renderizadores.ConsultaColunaHoraRenderer();
+        usuarioQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT u FROM Usuario u");
+        usuarioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : usuarioQuery.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButtonVisualizar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
-        jButtonSair = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
         jButtonConvenios = new javax.swing.JButton();
         jButtonUsuarios = new javax.swing.JButton();
@@ -71,6 +79,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jComboBoxMedico = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jButtonSair = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemUsuarios = new javax.swing.JMenuItem();
@@ -84,6 +96,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemBackup = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+
+        usuarioList = this.medicos;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,18 +141,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
-        jButtonSair.setMnemonic('S');
-        jButtonSair.setText("Sair");
-        jButtonSair.setToolTipText("Sair do sistema");
-        jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
-            }
-        });
-
         jButtonGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
         jButtonGravar.setMnemonic('a');
         jButtonGravar.setText("Salvar");
@@ -163,9 +165,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +174,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonVisualizar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonEditar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonSair, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonGravar, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
@@ -253,6 +252,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setAutoCreateRowSorter(true);
+        jTable1.setColumnSelectionAllowed(true);
         jTable1.setMaximumSize(new java.awt.Dimension(330, 0));
         jTable1.setMinimumSize(new java.awt.Dimension(330, 0));
         jTable1.setRequestFocusEnabled(false);
@@ -277,6 +277,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         columnBinding.setColumnName("TipoConsulta");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${medico.nome}"));
+        columnBinding.setColumnName("Médico");
+        columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,6 +325,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setText("Consultas maracadas para o dia:");
 
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, usuarioList, jComboBoxMedico);
+        bindingGroup.addBinding(jComboBoxBinding);
+
+        jComboBoxMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMedicoActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Médico:");
+
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
+        jButtonSair.setMnemonic('S');
+        jButtonSair.setText("Sair");
+        jButtonSair.setToolTipText("Sair do sistema");
+        jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setText("Todos Médicos");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -349,14 +382,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jDateChooserData, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPesquisaConsulta)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jComboBoxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCheckBox1)))
+                                .addGap(6, 6, 6)
+                                .addComponent(jButtonPesquisaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,19 +422,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(102, 102, 102)
                         .addComponent(jButtonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jDateChooserData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jComboBoxMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCheckBox1))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooserData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButtonPesquisaConsulta))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonPesquisaConsulta)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonConvenios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSair))
                 .addContainerGap())
         );
 
@@ -503,7 +557,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,7 +572,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void preencheListaMedicos() {
+        UsuarioDAO udao = new UsuarioDAO();
+        try {
+            medicos = (List<Usuario>) udao.pesquisarMedicos();
 
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaCadastroConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
         new TelaListaUsuarios().setVisible(true);
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
@@ -538,10 +602,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListaConsultaActionPerformed
 
     private void jButtonPesquisaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaConsultaActionPerformed
+        ConsultaDAO cDAO = new ConsultaDAO();
         this.data = jDateChooserData.getDate();
-        consultaQuery.setParameter("dataConsulta", this.data);
         consultaList.clear();
-        consultaList.addAll(consultaQuery.getResultList());
+
+        if (!jCheckBox1.isSelected()) {
+            try {
+                consultaList.addAll(cDAO.pesquisarPorDataMedico((Usuario) jComboBoxMedico.getSelectedItem(), data));
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+        try {
+                consultaList.addAll(cDAO.pesquisarPorData(data));
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        }
+//        this.data = jDateChooserData.getDate();
+//        consultaQuery.setParameter("dataConsulta", this.data);
+//        consultaList.clear();
+//        consultaList.addAll(consultaQuery.getResultList());
         atualizaLista();
     }//GEN-LAST:event_jButtonPesquisaConsultaActionPerformed
 
@@ -609,13 +691,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Consulta c = (Consulta) jComboBox1.getSelectedItem();
             try {
                 c = cDAO.pesquisarPorId(c.getIdconsulta());
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (c != null){
-            new TelaCadastroConsulta(c).setVisible(true);
-            }else{
+            if (c != null) {
+                new TelaCadastroConsulta(c).setVisible(true);
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Esta consulta já foi excluída por outro usuário");
                 this.jButtonPesquisaConsultaActionPerformed(evt);
             }
@@ -678,6 +760,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaSobre(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        this.jButtonPesquisaConsultaActionPerformed(evt);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jComboBoxMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMedicoActionPerformed
+        this.jButtonPesquisaConsultaActionPerformed(evt);
+    }//GEN-LAST:event_jComboBoxMedicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -728,10 +818,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUsuarios;
     private javax.swing.JButton jButtonVisualizar;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBoxMedico;
     private com.toedter.calendar.JDateChooser jDateChooserData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -750,6 +843,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private java.util.List<model.Usuario> usuarioList;
+    private javax.persistence.Query usuarioQuery;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

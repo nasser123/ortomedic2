@@ -194,6 +194,17 @@ public class UsuarioDAO implements IDao {
 
         return null;
     }
+    
+    public List<? extends Object> pesquisarMedicos() throws SQLException {
+        Query query = entity.createNativeQuery("Select * from usuario where idtipousuario = 2 ", Usuario.class);
+        List usuarios = query.getResultList();
+
+        if (!usuarios.isEmpty()) {
+            return usuarios;
+        }
+
+        return null;
+    }
 
     public boolean verificaLogin(String usuario, char[] senha) throws SQLException, NoSuchAlgorithmException {
         Usuario u = pesquisarPorUsuario(usuario);

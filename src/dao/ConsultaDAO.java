@@ -27,6 +27,7 @@ import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import model.Consulta;
 import model.Paciente;
+import model.Usuario;
 import utilidades.ConnectionFactory;
 
 /**
@@ -49,7 +50,7 @@ public class ConsultaDAO implements IDao {
     public boolean inserir(Object consulta) throws SQLException {
         if (consulta instanceof Consulta) {
             Consulta c = (Consulta) consulta;
-            if (dadosValidos(c) && ehDisponivel(c.getDataConsulta(), c.getHoraConsulta())) {
+            if (dadosValidos(c) && ehDisponivel(c.getDataConsulta(), c.getHoraConsulta(), c.getMedico())) {
                 entity.getTransaction().begin();
                 entity.persist(c);
                 entity.getTransaction().commit();
@@ -147,8 +148,22 @@ public class ConsultaDAO implements IDao {
         return null;
     }
 
-    public boolean ehDisponivel(Date data, Date hora) {
-        Query query = entity.createNamedQuery("Consulta.findByDisponibilidade").setParameter("dataConsulta", data).setParameter("horaConsulta", hora);
+    public List<Consulta> pesquisarPorDataMedico(Usuario medico, Date data) throws SQLException {
+        Query query = entity.createNamedQuery("Consulta.findByAgendaMedico").setParameter("dataConsulta", data).setParameter("medico", medico);
+        List<Consulta> consultas = query.getResultList();
+
+        return consultas;
+    }
+
+    public List<Consulta> pesquisarPorData(Date data) throws SQLException {
+        Query query = entity.createNamedQuery("Consulta.findByDataConsulta").setParameter("dataConsulta", data);
+        List<Consulta> consultas = query.getResultList();
+
+        return consultas;
+    }
+
+    public boolean ehDisponivel(Date data, Date hora, Usuario medico) {
+        Query query = entity.createNamedQuery("Consulta.findByDisponibilidade").setParameter("dataConsulta", data).setParameter("horaConsulta", hora).setParameter("medico", medico);
         List<Consulta> consultas = query.getResultList();
         if (!consultas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Horário não disponível");
