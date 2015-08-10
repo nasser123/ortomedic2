@@ -24,6 +24,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import org.apache.log4j.Logger;
 import javax.swing.JOptionPane;
+import model.Usuario;
 import org.apache.log4j.Level;
 import utilidades.ConfigTelas;
 
@@ -35,6 +36,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private boolean login;
     private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TelaLogin.class.getName());
+    private Usuario usu;
 
     /**
      * Creates new form TelaInicial
@@ -252,15 +254,16 @@ public class TelaLogin extends javax.swing.JFrame {
         } else {
 
             UsuarioDAO uc = new UsuarioDAO();
+            
             try {
-                this.login = uc.verificaLogin(usuario, senhaTemp);
+               this.usu = uc.verificaLogin(usuario, senhaTemp);
             } catch (SQLException | NullPointerException ex) {
                 Logger.getLogger(TelaLogin.class.getName()).log(Level.FATAL, null, ex);
                 return false;
             }
-            if (login) {
-                TelaPrincipal tp = new TelaPrincipal();
-                tp.setVisible(true);
+            if (this.usu != null) {
+                new TelaPrincipal(usu).setVisible(true);
+                this.login = true;
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "O nome do usuário ou a senha estão incorretos!", "DoctorSis - Login Incorreto", JOptionPane.ERROR_MESSAGE);

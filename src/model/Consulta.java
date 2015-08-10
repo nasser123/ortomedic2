@@ -88,6 +88,16 @@ public class Consulta implements Serializable {
     @JoinColumn(name = "idtipo_consulta", referencedColumnName = "idtipo_consulta")
     @ManyToOne(optional = false)
     private TipoConsulta idtipoConsulta;
+    @Transient
+    private boolean podeEditar;
+
+    public boolean isPodeEditar() {
+        return podeEditar;
+    }
+
+    public void setPodeEditar(boolean podeEditar) {
+        this.podeEditar = podeEditar;
+    }
 
     public String getsDataConsulta() {
         return Datas.getDate(this.dataConsulta);

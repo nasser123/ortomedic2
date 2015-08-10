@@ -31,8 +31,12 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         this.pac = paciente;
         initComponents();
         jComboBoxConsultas.setVisible(false);
-        Consulta selecionada = consulta;
-        selecionaConsulta(consulta);
+        if (consulta != null) {
+            Consulta selecionada = consulta;
+            selecionada.setPodeEditar(true);
+            selecionaConsulta(consulta);
+            bloqueiaTextos();
+        }
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
         this.setResizable(true);
@@ -44,9 +48,20 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
             if (this.paciente1.getConsultaList().get(i).equals(consulta)) {
                 index = i;
                 jTable1.setRowSelectionInterval(index, index);
+            } else {
+                this.paciente1.getConsultaList().get(i).setPodeEditar(false);
             }
         }
 
+    }
+    
+    private void bloqueiaTextos(){
+        jTextAreaAtestado.setEnabled(false);
+        jTextAreaControlado.setEnabled(false);
+        jTextAreaExames.setEnabled(false);
+        jTextAreaLaudo.setEnabled(false);
+        jTextAreaReceita.setEnabled(false);
+        jTextAreaSintomas.setEnabled(false);
     }
 
     /**
@@ -193,7 +208,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonCancelar)
                     .addComponent(jComboBoxConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,6 +255,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.sintomas}"), jTextAreaSintomas, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.podeEditar}"), jTextAreaSintomas, org.jdesktop.beansbinding.BeanProperty.create("editable"));
+        bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaSintomas, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
@@ -274,6 +291,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.receita}"), jTextAreaReceita, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.podeEditar}"), jTextAreaReceita, org.jdesktop.beansbinding.BeanProperty.create("editable"));
+        bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaReceita, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
@@ -288,6 +307,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jTextAreaControlado.setMinimumSize(new java.awt.Dimension(116, 43));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.medicacao}"), jTextAreaControlado, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.podeEditar}"), jTextAreaControlado, org.jdesktop.beansbinding.BeanProperty.create("editable"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaControlado, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
@@ -344,6 +365,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.atestado}"), jTextAreaAtestado, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.podeEditar}"), jTextAreaAtestado, org.jdesktop.beansbinding.BeanProperty.create("editable"));
+        bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaAtestado, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
@@ -356,6 +379,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jTextAreaLaudo.setBorder(javax.swing.BorderFactory.createTitledBorder("Laudo"));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.laudo}"), jTextAreaLaudo, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.podeEditar}"), jTextAreaLaudo, org.jdesktop.beansbinding.BeanProperty.create("editable"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaLaudo, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
@@ -427,6 +452,8 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
         jTextAreaExames.setMinimumSize(new java.awt.Dimension(116, 43));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jComboBoxConsultas, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.exames}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.podeEditar}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("editable"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jTextAreaExames, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
@@ -568,7 +595,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 Date data = Datas.getCurrentTime();
                 new TelaSelecionaData(this, true).setVisible(true);
                 data = TelaSelecionaData.getData();
-                
+
                 ExecutaRelatorio er = new ExecutaRelatorio();
                 er.abrirRelatorioReceituario(c, "Receita", c.getReceita(), data);
 
@@ -588,7 +615,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 Date data = Datas.getCurrentTime();
                 new TelaSelecionaData(this, true).setVisible(true);
                 data = TelaSelecionaData.getData();
-                
+
                 ExecutaRelatorio er = new ExecutaRelatorio();
                 er.abrirRelatorioReceituario(c, "Atestado", c.getAtestado(), data);
 
@@ -608,7 +635,7 @@ public class TelaConsultasPaciente extends javax.swing.JFrame {
                 Date data = Datas.getCurrentTime();
                 new TelaSelecionaData(this, true).setVisible(true);
                 data = TelaSelecionaData.getData();
-                
+
                 ExecutaRelatorio er = new ExecutaRelatorio();
                 er.abrirRelatorioReceituario(c, "Laudo", c.getLaudo(), data);
 

@@ -29,7 +29,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
         initComponents();
         this.data = Datas.getCurrentTime();
         jDateChooser1.setDate(this.data);
-        jButton1.requestFocus();
+        jButtonImprimir.requestFocus();
         
     }
 
@@ -45,7 +45,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,11 +53,10 @@ public class TelaSelecionaData extends javax.swing.JDialog {
 
         jLabel1.setText("Selecione a data para impressão");
 
-        jButton1.setText("Imprimir");
-        jButton1.setEnabled(true);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonImprimir.setText("Imprimir");
+        jButtonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonImprimirActionPerformed(evt);
             }
         });
 
@@ -73,7 +72,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
                 .addGap(41, 41, 41))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addComponent(jButton1)
+                .addComponent(jButtonImprimir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +83,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(jButtonImprimir)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -103,7 +102,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImprimirActionPerformed
         if (Datas.ehDate(jDateChooser1.getDate())) {
             this.data = jDateChooser1.getDate();
             dispose();
@@ -111,7 +110,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Formato da data incorreto");
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,7 +155,7 @@ public class TelaSelecionaData extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonImprimir;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -49,7 +49,7 @@ public class TelaSobre extends javax.swing.JDialog {
 
         jLabel2.setText("Versão:");
 
-        jLabel3.setText("1.1");
+        jLabel3.setText("1.2");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Contatos");

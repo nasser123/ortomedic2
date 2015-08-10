@@ -206,16 +206,16 @@ public class UsuarioDAO implements IDao {
         return null;
     }
 
-    public boolean verificaLogin(String usuario, char[] senha) throws SQLException, NoSuchAlgorithmException {
+    public Usuario verificaLogin(String usuario, char[] senha) throws SQLException, NoSuchAlgorithmException {
         Usuario u = pesquisarPorUsuario(usuario);
         String s = Senhas.toMD5(senha);
         if (u != null) {
             if (Senhas.testaSenhasCadastro(s, u.getSenha())) {
-                return true;
+                return u;
             } else {
-                return false;
+                return null;
             }
         }
-        return false;
+        return null;
     }
 }
