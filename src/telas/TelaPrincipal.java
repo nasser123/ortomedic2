@@ -8,6 +8,7 @@ package telas;
 import dao.ConsultaDAO;
 import dao.PacienteDAO;
 import dao.UsuarioDAO;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -82,7 +83,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonVisualizar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jButtonGravar = new javax.swing.JButton();
-        jButtonSair = new javax.swing.JButton();
+        jButtonFechar = new javax.swing.JButton();
+        jButtonLogof = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBoxMedico = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
@@ -176,7 +178,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jDateChooserData, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 84, 187, -1));
 
         jButtonPesquisaConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/pesquisar2.png"))); // NOI18N
-        jButtonPesquisaConsulta.setMnemonic('P');
+        jButtonPesquisaConsulta.setMnemonic('Z');
         jButtonPesquisaConsulta.setText("Pesquisar/Atualizar");
         jButtonPesquisaConsulta.setToolTipText("Pesquisar consultas marcadas");
         jButtonPesquisaConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -299,15 +301,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
-        jButtonSair.setMnemonic('S');
-        jButtonSair.setText("Sair");
-        jButtonSair.setToolTipText("Sair do sistema");
-        jButtonSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
+        jButtonFechar.setMnemonic('F');
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.setToolTipText("Fechar o sistema");
+        jButtonFechar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonFechar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
+                jButtonFecharActionPerformed(evt);
+            }
+        });
+
+        jButtonLogof.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair2.png"))); // NOI18N
+        jButtonLogof.setMnemonic('F');
+        jButtonLogof.setText("Logoff");
+        jButtonLogof.setToolTipText("Sair do sistema");
+        jButtonLogof.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonLogof.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonLogof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLogofActionPerformed(evt);
             }
         });
 
@@ -322,8 +336,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(jButtonLogof, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel2Layout.setVerticalGroup(
@@ -334,7 +350,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonVisualizar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonEditar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonGravar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonSair, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jButtonFechar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonLogof, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -581,13 +598,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonVisualizarActionPerformed
 
-    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
 
+        
         int sair = JOptionPane.showConfirmDialog(rootPane, "Você tem certeza que deseja sair do programa?");
         if (sair == 0) {
             int backup = JOptionPane.showConfirmDialog(rootPane, "Deseja realizar backup?");
             if (backup == 0) {
-                boolean gravou = ConnectionFactory.geraBackup();
+                boolean gravou = false;
+                gravou = ConnectionFactory.geraBackup();
                 if (gravou) {
                     JOptionPane.showMessageDialog(rootPane, "Arquivo gravado com sucesso");
                 } else {
@@ -596,7 +615,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             System.exit(0);
         }
-    }//GEN-LAST:event_jButtonSairActionPerformed
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if (evt.getClickCount() > 1) {
@@ -699,6 +718,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.jButtonPesquisaConsultaActionPerformed(evt);
     }//GEN-LAST:event_jComboBoxMedicoActionPerformed
 
+    private void jButtonLogofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogofActionPerformed
+        new TelaLogin().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonLogofActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -741,12 +765,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButtonConvenios;
     private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonGravar;
     private javax.swing.JButton jButtonListaConsulta;
+    private javax.swing.JButton jButtonLogof;
     private javax.swing.JButton jButtonNovaConsulta;
     private javax.swing.JButton jButtonPacientes;
     private javax.swing.JButton jButtonPesquisaConsulta;
-    private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonUsuarios;
     private javax.swing.JButton jButtonVisualizar;
     private javax.swing.JCheckBox jCheckBox1;

@@ -114,11 +114,15 @@ public class ConnectionFactory {
                         + "  " + ConfigurationFactory.DATABASE + " > Backup\\" + nomeBkp;
 
                 Runtime bkp = Runtime.getRuntime();
-                bkp.exec(dump);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+                Process p = bkp.exec(dump);
+                //bkp.exec(dump);
+                while (p.isAlive()) {
+
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 boolean tamanho = arquivoPreenchido(nomeBkp);
                 if (tamanho) {
@@ -160,7 +164,7 @@ public class ConnectionFactory {
 //        }
 
         return testeMySqlDump.isFile();
-        
+
 //        File[] arquivos = ConfigurationFactory.DBFILE.listFiles();
 //        if (ConfigurationFactory.DBFILE.exists()) {
 //            for (int i = 0; i < arquivos.length; i++) {

@@ -7,6 +7,7 @@ package telas;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -116,7 +117,8 @@ public class TelaBackupJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGeraBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGeraBackupActionPerformed
-        boolean gravou = ConnectionFactory.geraBackup();
+        boolean gravou = false;
+        gravou = ConnectionFactory.geraBackup();
         if(gravou)
             JOptionPane.showMessageDialog(rootPane, "Arquivo gravado com sucesso");
         else
