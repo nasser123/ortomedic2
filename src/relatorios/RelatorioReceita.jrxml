@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="97aac7d6-a793-42a2-86d6-ef8d00b3ad38">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="83"/>
 	<parameter name="CONSULTA" class="java.lang.Integer"/>
 	<parameter name="IDADE" class="java.lang.Integer"/>
 	<parameter name="TITULO" class="java.lang.String"/>
@@ -117,7 +117,7 @@ WHERE
 				<textElement>
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Documento gerado por MedSis - Sistema de Gerenciamento de Consultas Médicas]]></text>
+				<text><![CDATA[Documento gerado por DoctorSis - Sistema de Gerenciamento de Consultas Médicas]]></text>
 			</staticText>
 		</band>
 	</detail>

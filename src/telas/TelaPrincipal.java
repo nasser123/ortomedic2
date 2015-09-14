@@ -8,7 +8,6 @@ package telas;
 import dao.ConsultaDAO;
 import dao.PacienteDAO;
 import dao.UsuarioDAO;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +40,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(usuario.getIdtipousuario().getIdtipoUsuario().equals(2)){
             jComboBoxMedico.setSelectedItem(usuario);
         }
-
+        jLabel5.setText(usuario.getNome());
         jDateChooserData.setDate(this.data);
         ConfigTelas ct = new ConfigTelas(this);
         ct.carregarConfig(this);
@@ -65,7 +64,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(consultaQuery.getResultList());
         consultaColunaHoraRenderer1 = new renderizadores.ConsultaColunaHoraRenderer();
         usuarioQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT u FROM Usuario u");
-        usuarioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : usuarioQuery.getResultList();
+        usuarioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(usuarioQuery.getResultList());
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButtonConvenios = new javax.swing.JButton();
@@ -89,6 +88,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jComboBoxMedico = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemUsuarios = new javax.swing.JMenuItem();
@@ -400,6 +401,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 81, -1, -1));
 
+        jLabel4.setText("Usuário:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 50, -1));
+
+        jLabel5.setText("jLabel5");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, 160, -1));
+
         jMenu1.setText("Cadastros");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -573,6 +580,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 //        consultaList.clear();
 //        consultaList.addAll(consultaQuery.getResultList());
         atualizaLista();
+        preencheListaMedicos();
+        usuarioList.clear();
+        usuarioList.addAll(medicos);
     }//GEN-LAST:event_jButtonPesquisaConsultaActionPerformed
 
     private void atualizaLista() {
@@ -582,6 +592,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
 
     }
+    
+   
     private void jButtonVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarActionPerformed
         if (jComboBox1.getSelectedIndex() != -1) {
             PacienteDAO pdao = new PacienteDAO();
@@ -781,6 +793,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
