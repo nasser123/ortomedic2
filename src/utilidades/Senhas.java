@@ -52,5 +52,14 @@ public class Senhas {
         return senhaBanco;
     }
     
+    /**
+     * Verifica se a chave inserida é valida
+     * @param chave chave a ser validade
+     */
+    public static boolean verificaChave(String chave){
+        
+        return false;
+    }
+    
     
 }
