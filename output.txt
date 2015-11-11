@@ -1,0 +1,3 @@
+# List of generated media files. The columns are tab-separated:
+# id | media file type | display name | media file path
+24	windows	Windows Archive	C:\Users\Nasser\Documents\NetBeansProjects\ortomedic2\DoctorSis_windows-x64_1_2.zip

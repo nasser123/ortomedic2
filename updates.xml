@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updateDescriptor baseUrl="">
+  <entry targetMediaFileId="24" updatableVersionMin="" updatableVersionMax="" fileName="DoctorSis_windows-x64_1_2.zip" newVersion="1.2" newMediaFileId="24" fileSize="118" bundledJre="" archive="true">
+    <comment language="pt_BR" />
+  </entry>
+</updateDescriptor>
