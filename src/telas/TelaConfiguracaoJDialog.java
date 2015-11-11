@@ -51,7 +51,6 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sistema1 = new model.Sistema();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldResponsavel = new javax.swing.JTextField();
@@ -280,6 +279,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         cf.DATABASE = jTextFieldDataBase.getText();
         cf.DBUSER = jTextFieldUser.getText();
         cf.CIDADE = jTextFieldCidade.getText();
+        cf.SERIAL = jTextFieldChave.getText();
 
         char[] senhaTemp = jPasswordFieldPassword.getPassword();
         String senha = "";
@@ -393,6 +393,5 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldPort;
     private javax.swing.JTextField jTextFieldResponsavel;
     private javax.swing.JTextField jTextFieldUser;
-    private model.Sistema sistema1;
     // End of variables declaration//GEN-END:variables
 }

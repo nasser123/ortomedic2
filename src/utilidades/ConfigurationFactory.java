@@ -34,6 +34,7 @@ public class ConfigurationFactory {
     public static File DBFILE;
     public static String ARCHITECTURE;
     public static String CIDADE;
+    public static String SERIAL;
     private static Section config;
 
     public ConfigurationFactory(String secao) throws FileNotFoundException {
@@ -62,6 +63,7 @@ public class ConfigurationFactory {
             CIDADE = config.get("db.cidade");
             DBDIR = "mysql";
             DBFILE = new File(DBDIR);
+            SERIAL = config.get("db.serial");
         }
         if(DBDIR == null){
             DBDIR = "mysql";
@@ -102,6 +104,7 @@ public class ConfigurationFactory {
             CIDADE = config.get("db.cidade");
             DBDIR = "mysql";
             DBFILE = new File(DBDIR);
+            SERIAL = config.get("db.serial");
         }
         return config;
     }
@@ -160,6 +163,7 @@ public class ConfigurationFactory {
             buffW.newLine();
             buffW.write("db.cidade=" + CIDADE);
             buffW.newLine();
+            buffW.write("db.serial=" + SERIAL);
 
             buffR.close();
             buffW.close();
