@@ -151,7 +151,7 @@ public class UsuarioDAO implements IDao {
             return null;
         } catch (NullPointerException npe) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.ERROR, null, npe);
-            logger.error("Erro na pesquisa de usuario!",npe);
+            logger.error("Erro na pesquisa de usuario " + usuario + "!",npe);
         }
         return null;
 
