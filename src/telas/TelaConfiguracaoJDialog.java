@@ -26,7 +26,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         ConfigTelas ct = new ConfigTelas(jPanel1, 300, 400);
-        ct.carregarConfig(jPanel1); 
+        ct.carregarConfig(jPanel1);
         try {
             this.cf = new ConfigurationFactory("main");
         } catch (FileNotFoundException ex) {
@@ -51,6 +51,27 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sistema1 = new model.Sistema();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jTextFieldResponsavel = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldDocumento = new javax.swing.JTextField();
+        jCheckBoxControlaDataImpressao = new javax.swing.JCheckBox();
+        jTextFieldChave = new javax.swing.JTextField();
+        jCheckBoxControlaHorario = new javax.swing.JCheckBox();
+        jTextFieldCidade = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jButtonSalvar1 = new javax.swing.JButton();
+        jButtonSair1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -69,34 +90,104 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldPort = new javax.swing.JTextField();
         jButtonBanco = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jTextFieldCidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jTextFieldResponsavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 54, 277, 20));
+        jPanel2.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 85, 277, 20));
+        jPanel2.add(jTextFieldDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 116, 277, 20));
+
+        jCheckBoxControlaDataImpressao.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jCheckBoxControlaDataImpressao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, 20));
+        jPanel2.add(jTextFieldChave, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 176, 277, 20));
+
+        jCheckBoxControlaHorario.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jCheckBoxControlaHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 209, -1, 20));
+        jPanel2.add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 147, 277, 20));
+
+        jLabel9.setText("Nome:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, -1, 20));
+
+        jLabel10.setText("Email:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, -1, 20));
+
+        jLabel11.setText("Documento:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, 20));
+
+        jLabel12.setText("Chave de Acesso:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 178, -1, 20));
+
+        jLabel13.setText("Controla data de Impressão:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 20));
+
+        jLabel15.setText("Controla Horário:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 209, -1, 20));
+
+        jLabel8.setText("Cidade");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 147, -1, 20));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Configurações do Sistema");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 364, -1));
+
+        jButtonSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/salvar.png"))); // NOI18N
+        jButtonSalvar1.setMnemonic('a');
+        jButtonSalvar1.setText("Salvar");
+        jButtonSalvar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonSalvar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonSalvar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 80, 80));
+
+        jButtonSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/sair.png"))); // NOI18N
+        jButtonSair1.setMnemonic('s');
+        jButtonSair1.setText("Sair");
+        jButtonSair1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonSair1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonSair1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSair1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonSair1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 80, 80));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/senha.png"))); // NOI18N
+        jButton1.setText("Gera Chave");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, 80));
+
+        jTabbedPane2.addTab("Sistema", jPanel2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Configurações do Sistema");
+        jLabel1.setText("Configurações de acesso ao Banco de Dados");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 364, -1));
 
         jLabel2.setText("Name:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, -1, 20));
 
         jLabel3.setText("Host");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 88, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 85, -1, 20));
 
         jLabel4.setText("Database");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 147, -1, 20));
 
         jLabel5.setText("User");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 181, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 178, -1, 20));
 
         jLabel6.setText("Password");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 212, -1, -1));
-        jPanel1.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 54, 275, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 209, -1, 20));
+        jPanel1.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 54, 275, -1));
         jPanel1.add(jTextFieldHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 85, 277, -1));
         jPanel1.add(jTextFieldDataBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 147, 277, -1));
         jPanel1.add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 178, 277, -1));
@@ -139,7 +230,7 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         jPanel1.add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 209, 277, -1));
 
         jLabel7.setText("Port:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 119, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, 20));
         jPanel1.add(jTextFieldPort, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 116, 277, -1));
 
         jButtonBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones32/basic_data_32.png"))); // NOI18N
@@ -154,23 +245,23 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
         });
         jPanel1.add(jButtonBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 110, 80));
 
-        jLabel8.setText("Cidade");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
-        jPanel1.add(jTextFieldCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 277, -1));
+        jTabbedPane2.addTab("Banco de Dados", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,6 +269,11 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        salvaConfiguracao();
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void salvaConfiguracao() {
+
         cf.DBNAME = jTextFieldName.getText();
         cf.DBHOST = jTextFieldHost.getText();
         cf.DBPORT = jTextFieldPort.getText();
@@ -191,9 +287,9 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
             senha = senha + senhaTemp[i];
         }
         cf.DBPASSWORD = senha;
-        //preencheArquivo(jTextFieldDiretorio.getText());
         cf.gravaConfiguracao();
-    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    }
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
@@ -206,7 +302,14 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     private void jButtonBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBancoActionPerformed
         new TelaBackupJDialog(null, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jButtonBancoActionPerformed
-    
+
+    private void jButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar1ActionPerformed
+        salvaConfiguracao();
+    }//GEN-LAST:event_jButtonSalvar1ActionPerformed
+
+    private void jButtonSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSair1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonSair1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,11 +355,22 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBanco;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonSair1;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonSalvar1;
+    private javax.swing.JCheckBox jCheckBoxControlaDataImpressao;
+    private javax.swing.JCheckBox jCheckBoxControlaHorario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -264,13 +378,21 @@ public class TelaConfiguracaoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordFieldPassword;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextField jTextFieldChave;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldDataBase;
+    private javax.swing.JTextField jTextFieldDocumento;
+    private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldHost;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldPort;
+    private javax.swing.JTextField jTextFieldResponsavel;
     private javax.swing.JTextField jTextFieldUser;
+    private model.Sistema sistema1;
     // End of variables declaration//GEN-END:variables
 }
