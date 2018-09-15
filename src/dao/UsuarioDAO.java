@@ -35,6 +35,7 @@ import utilidades.Senhas;
  * @author Nasser
  */
 public class UsuarioDAO implements IDao {
+
     /*
      * To change this template, choose Tools | Templates
      * and open the template in the editor.
@@ -102,12 +103,14 @@ public class UsuarioDAO implements IDao {
     public boolean excluir(Object usuario) throws SQLException {
         if (usuario instanceof Usuario) {
             Usuario u = (Usuario) usuario;
-            if (!entity.getTransaction().isActive()) {
-                entity.getTransaction().begin();
-                entity.remove(u);
-                entity.getTransaction().commit();
-                JOptionPane.showMessageDialog(null, "Usuário excluido com sucesso.");
-                return true;
+            if (u.getConsultaList().size() == 0) {
+                if (!entity.getTransaction().isActive()) {
+                    entity.getTransaction().begin();
+                    entity.remove(u);
+                    entity.getTransaction().commit();
+                    JOptionPane.showMessageDialog(null, "Usuário excluido com sucesso.");
+                    return true;
+                }
             }
         }
         JOptionPane.showMessageDialog(null, "Esse usuário não pode ser excluido.");

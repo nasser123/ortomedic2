@@ -29,7 +29,6 @@ import model.Consulta;
 import model.Paciente;
 import model.Usuario;
 import utilidades.ConnectionFactory;
-import utilidades.Datas;
 
 /**
  *
@@ -51,7 +50,7 @@ public class ConsultaDAO implements IDao {
     public boolean inserir(Object consulta) throws SQLException {
         if (consulta instanceof Consulta) {
             Consulta c = (Consulta) consulta;
-            if (dadosValidos(c) && ehDisponivel(c.getDataConsulta(), c.getHoraConsulta())) {
+            if (dadosValidos(c) && ehDisponivel(c.getDataConsulta(), c.getHoraConsulta(), c.getMedico())) {
                 entity.getTransaction().begin();
                 entity.persist(c);
                 entity.getTransaction().commit();
@@ -140,8 +139,8 @@ public class ConsultaDAO implements IDao {
         return null;
     }
 
-    public boolean ehDisponivel(Date data, Date hora) {
-        Query query = entity.createNamedQuery("Consulta.findByDisponibilidade").setParameter("dataConsulta", data).setParameter("horaConsulta", hora);
+    public boolean ehDisponivel(Date data, Date hora, Usuario medico) {
+        Query query = entity.createNamedQuery("Consulta.findByDisponibilidade").setParameter("dataConsulta", data).setParameter("horaConsulta", hora).setParameter("medico", medico);
         List<Consulta> consultas = query.getResultList();
         if (!consultas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Horário não disponível");

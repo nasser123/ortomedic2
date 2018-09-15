@@ -39,11 +39,16 @@ import utilidades.Datas;
     @NamedQuery(name = "Consulta.findAll", query = "SELECT c FROM Consulta c ORDER BY c.dataConsulta, c.horaConsulta"),
     @NamedQuery(name = "Consulta.findByIdconsulta", query = "SELECT c FROM Consulta c WHERE c.idconsulta = :idconsulta"),
     @NamedQuery(name = "Consulta.findByDataConsulta", query = "SELECT c FROM Consulta c WHERE c.dataConsulta = :dataConsulta ORDER BY c.horaConsulta"),
+    @NamedQuery(name = "Consulta.findByDataConsultaMedico", query = "SELECT c FROM Consulta c WHERE c.dataConsulta = :dataConsulta and c.medico = :medico ORDER BY c.horaConsulta"),
     @NamedQuery(name = "Consulta.findByHoraConsulta", query = "SELECT c FROM Consulta c WHERE c.horaConsulta = :horaConsulta"),
     @NamedQuery(name = "Consulta.findByidPaciente", query = "SELECT c FROM Consulta c WHERE c.idpaciente = :idpaciente ORDER BY c.dataConsulta, c.horaConsulta"),
-    @NamedQuery(name = "Consulta.findByDisponibilidade", query = "SELECT c FROM Consulta c WHERE c.dataConsulta = :dataConsulta and c.horaConsulta = :horaConsulta"),
+    @NamedQuery(name = "Consulta.findByDisponibilidade", query = "SELECT c FROM Consulta c WHERE c.dataConsulta = :dataConsulta and c.horaConsulta = :horaConsulta and c.medico = :medico"),
     @NamedQuery(name = "Consulta.findByCompareceu", query = "SELECT c FROM Consulta c WHERE c.compareceu = :compareceu")})
 public class Consulta implements Serializable {
+
+    @JoinColumn(name = "medico", referencedColumnName = "idusuario")
+    @ManyToOne(optional = false)
+    private Usuario medico;
     @Lob
     @Column(name = "atestado")
     private String atestado;
@@ -251,6 +256,14 @@ public class Consulta implements Serializable {
 
     public void setLaudo(String laudo) {
         this.laudo = laudo;
+    }
+
+    public Usuario getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Usuario medico) {
+        this.medico = medico;
     }
     
 }
